@@ -15,7 +15,7 @@ trafficInfo: "待核实"
 nodes: "香港、日本、新加坡、美国等"
 protocols: ["Shadowsocks", "V2Ray", "Trojan"]
 devices: 3
-updatedDate: 2026-10-09
+updatedDate: "2026-10-09"
 ---
 
 ## 品牌概览
