@@ -38,10 +38,13 @@ const brands = defineCollection({
     protocols: z.array(z.string()).default([]),
     devices: z.number().optional(),
     
-    // 优惠码 (可直接写字符串，如需多个可用数组)
+    // 优惠码
     couponCode: z.string().optional(),
     couponDesc: z.string().optional(),
     
+    // 新增：晚高峰速度测速数据
+    peakSpeed: z.string().optional(),
+
     // 状态
     established: z.string().optional(),
     updatedDate: z.coerce.date(),

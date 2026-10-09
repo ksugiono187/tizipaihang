@@ -87,10 +87,10 @@ const renderStars = (rating: number) => {
             <div class="space-y-2 mb-6">
               <div class="flex justify-between text-sm">
                 <span class="text-gray-400">晚高峰速度</span>
-                <span class="text-green-400 font-semibold">98.5%</span>
+                <span class="text-green-400 font-semibold">{brand.data.peakSpeed || '95.0%'}</span>
               </div>
               <div class="w-full bg-gray-800 rounded-full h-1.5">
-                <div class="bg-green-400 h-1.5 rounded-full" style="width: 98.5%"></div>
+                <div class="bg-green-400 h-1.5 rounded-full" style={`width: ${brand.data.peakSpeed || '95.0%'}`}></div>
               </div>
               
               <div class="flex justify-between text-sm mt-3">
