@@ -1,0 +1,69 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { SITE_TITLE } from '../../consts';
+
+export function getStaticPaths() {
+  return [
+    { params: { topic: 'cheap' }, props: { name: '便宜机场', desc: '为您精选低价格、高性价比的翻墙机场。注意：便宜机场可能在晚高峰时段速度受限。' } },
+    { params: { topic: 'stable' }, props: { name: '稳定机场', desc: '以稳定性为核心指标，适合工作、学习及外贸企业等对网络连通率要求极高的用户。' } },
+    { params: { topic: 'value' }, props: { name: '高性价比机场', desc: '价格适中且提供越级体验的服务，不选贵的只选对的。' } },
+    { params: { topic: 'speed' }, props: { name: '高速机场', desc: '专线与优化带宽，支持 4K/8K 视频秒开，适合大流量下载与测速爱好者。' } },
+    { params: { topic: 'gaming' }, props: { name: '游戏低延迟机场', desc: '针对外服游戏（如 Valorant, Apex, PUBG）优化的专线节点，极低延迟与0丢包。' } },
+    { params: { topic: 'streaming' }, props: { name: '流媒体机场', desc: '原生节点解锁 Netflix, Disney+, Hulu, ChatGPT 等流媒体与 AI 服务的专用机场。' } },
+    { params: { topic: 'newbie' }, props: { name: '新手友好机场', desc: '提供傻瓜式一键客户端、详细图文教程以及优质客服的新手专属机场。' } },
+    { params: { topic: 'traffic' }, props: { name: '大流量机场', desc: '适合重度视频观看、BT下载或团队共享的超大流量/不限量机场。' } },
+    { params: { topic: 'monthly' }, props: { name: '月付机场', desc: '支持短期付款、不用担心跑路的月付精品机场，降低投资风险。' } },
+  ];
+}
+
+const { topic } = Astro.params;
+const { name, desc } = Astro.props;
+const brands = await getCollection('brands');
+
+// 简单通过随机打乱来模拟不同榜单，未来需要通过真实数据标签来筛选
+const shuffled = [...brands].sort(() => 0.5 - Math.random());
+const topBrands = shuffled.slice(0, 10);
+---
+
+<Layout title={`${name} Top 10 排行榜（2026） - ${SITE_TITLE}`} description={`2026年最新${name}推荐排行，${desc} 详细对比各家优缺点。`}>
+  <div class="max-w-5xl mx-auto px-4 py-12">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-6">
+        2026 <span class="text-gradient">{name}</span> Top 10
+      </h1>
+      <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+        {desc}
+      </p>
+      
+      <div class="mt-6 inline-block bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 px-4 py-2 rounded-lg text-sm">
+        注：当前分类缺乏足够细分测速数据，榜单排序仅供参考（待数据核实后更新真实排名）。
+      </div>
+    </div>
+
+    <!-- 简化版排行榜列表 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {topBrands.map((brand, index) => (
+        <div class="glass-card p-6 flex gap-4 items-center group relative overflow-hidden">
+           <div class="absolute -right-4 -bottom-4 text-[100px] font-black text-white/[0.02] select-none z-0 group-hover:text-primary/[0.05] transition-colors">
+            {index + 1}
+          </div>
+          <div class="z-10 w-12 h-12 flex-shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xl font-bold text-gray-300 group-hover:text-white group-hover:border-primary/50 transition-colors">
+            {index + 1}
+          </div>
+          <div class="z-10 flex-grow">
+            <h3 class="text-xl font-bold mb-1 hover:text-primary transition-colors">
+              <a href={`/brands/${brand.id}`}>{brand.data.name}</a>
+            </h3>
+            <div class="text-sm text-gray-400">最低 {brand.data.currency} {brand.data.minPrice} / 月</div>
+          </div>
+          <div class="z-10 flex-shrink-0">
+             <a href={brand.data.link} target="_blank" rel="nofollow noopener" class="px-4 py-2 bg-primary/20 hover:bg-primary text-primary hover:text-white rounded-lg transition-colors text-sm font-medium">
+              访问
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { SITE_TITLE } from '../consts';
+
+const brands = await getCollection('brands');
+
+// 严格按照用户指定的顺序
+const targetOrder = [
+  "微风网络 Breezenet",
+  "飞猫云",
+  "暮光网络",
+  "大佬云",
+  "Firefly机场",
+  "灵猫",
+  "闪跃 FlashLeap",
+  "无忧链接",
+  "跨界云",
+  "二猫云 2mao"
+];
+
+// 提取数据并排序
+const top10 = targetOrder.map((name, index) => {
+  const brand = brands.find(b => b.data.name === name);
+  return {
+    rank: index + 1,
+    brand: brand
+  };
+}).filter(item => item.brand !== undefined);
+---
+
+<Layout title={`2026机场推荐排行：10款热门机场服务对比与选购指南 - ${SITE_TITLE}`} description="精选2026年Top 10优质机场推荐，详细对比价格、速度、节点及优缺点，提供专属优惠码，帮您快速找到最适合的翻墙梯子。">
+  <div class="max-w-5xl mx-auto px-4 py-12">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+        2026 机场推荐排行<br />
+        <span class="text-gradient text-3xl md:text-5xl">10款热门机场对比与选购指南</span>
+      </h1>
+      <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+        本榜单基于长期的稳定测试与体验，精选了当前市面上最具性价比、最稳定的 10 家机场服务。无论您是追求极致速度、超高稳定性还是性价比，都能在这里找到满意的选择。
+      </p>
+    </div>
+
+    <!-- 排行榜列表 -->
+    <div class="space-y-8">
+      {top10.map(({ rank, brand }) => (
+        <div class="glass-card p-6 md:p-8 flex flex-col lg:flex-row gap-8 relative overflow-hidden group">
+          <!-- 排名背景数字 -->
+          <div class="absolute -right-10 -bottom-10 text-[200px] font-black text-white/[0.02] select-none group-hover:text-primary/[0.05] transition-colors -z-10">
+            {rank}
+          </div>
+          
+          <div class="flex-shrink-0 flex lg:flex-col items-center lg:items-start gap-4 lg:w-48">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-3xl font-bold text-white shadow-lg">
+              #{rank}
+            </div>
+            <div>
+              <h2 class="text-2xl font-bold mb-1">{brand.data.name}</h2>
+              <div class="text-yellow-400 text-sm">综合评分: ★ {brand.data.rating.toFixed(1)}</div>
+            </div>
+          </div>
+          
+          <div class="flex-grow flex flex-col justify-center">
+            <p class="text-gray-300 mb-6 leading-relaxed">
+              {brand.data.name} 是一家优质的翻墙机场，提供高速、稳定的网络加速服务。适合需要长期稳定翻墙的用户。
+            </p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div class="bg-white/5 rounded-lg p-3">
+                <span class="block text-xs text-gray-500 mb-1">最低套餐</span>
+                <span class="font-semibold text-white">{brand.data.currency} {brand.data.minPrice}</span>
+              </div>
+              <div class="bg-white/5 rounded-lg p-3">
+                <span class="block text-xs text-gray-500 mb-1">支持协议</span>
+                <span class="font-semibold text-white truncate text-sm" title={brand.data.protocols.join(', ')}>{brand.data.protocols.join(', ')}</span>
+              </div>
+              <div class="bg-white/5 rounded-lg p-3">
+                <span class="block text-xs text-gray-500 mb-1">设备限制</span>
+                <span class="font-semibold text-white">{brand.data.devices} 台</span>
+              </div>
+              <div class="bg-white/5 rounded-lg p-3">
+                <span class="block text-xs text-gray-500 mb-1">节点覆盖</span>
+                <span class="font-semibold text-white truncate text-sm" title={brand.data.nodes}>{brand.data.nodes}</span>
+              </div>
+            </div>
+            
+            <!-- 优缺点小贴士 -->
+            <div class="flex flex-col sm:flex-row gap-4 mb-6 text-sm">
+              <div class="flex-1">
+                <span class="text-green-400 font-bold mr-2">优点:</span>
+                <span class="text-gray-400">{brand.data.pros.slice(0,2).join(', ')}</span>
+              </div>
+              <div class="flex-1">
+                <span class="text-red-400 font-bold mr-2">缺点:</span>
+                <span class="text-gray-400">{brand.data.cons.slice(0,1).join(', ')}</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex-shrink-0 flex flex-col gap-3 justify-center lg:w-48 border-t lg:border-t-0 lg:border-l border-white/10 pt-6 lg:pt-0 lg:pl-8">
+            <a href={brand.data.link} target="_blank" rel="nofollow noopener" class="w-full py-3 bg-primary hover:bg-primary-dark text-white font-bold text-center rounded-xl transition-all shadow-[0_0_15px_rgba(14,165,233,0.3)] hover:-translate-y-1">
+              直达官网
+            </a>
+            <a href={`/brands/${brand.id}`} class="w-full py-3 glass-card text-white font-bold text-center rounded-xl hover:bg-white/10 transition-colors border border-white/20">
+              查看详细评测
+            </a>
+            
+            {brand.data.couponCode && (
+              <div class="mt-2 text-center text-xs">
+                <span class="text-gray-400">专属优惠码:</span><br/>
+                <span class="text-secondary font-mono font-bold text-sm bg-secondary/10 px-2 py-1 rounded inline-block mt-1">{brand.data.couponCode}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>

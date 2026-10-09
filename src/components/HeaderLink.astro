@@ -1,0 +1,26 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'a'>;
+
+const { href, class: className, ...props } = Astro.props;
+const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
+const subpath = pathname.match(/[^\/]+/g);
+const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+---
+
+<a 
+  href={href} 
+  class:list={[
+    "text-sm font-medium transition-colors hover:text-primary relative group py-2",
+    isActive ? "text-primary" : "text-gray-300",
+    className
+  ]} 
+  {...props}
+>
+  <slot />
+  <span class:list={[
+    "absolute bottom-0 left-0 w-full h-[2px] bg-primary transition-transform origin-left",
+    isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+  ]}></span>
+</a>

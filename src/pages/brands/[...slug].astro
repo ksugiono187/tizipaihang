@@ -1,0 +1,112 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const brands = await getCollection('brands');
+  return brands.map((brand) => ({
+    params: { slug: brand.id },
+    props: { brand },
+  }));
+}
+
+const { brand } = Astro.props;
+const { Content } = await render(brand);
+const data = brand.data;
+---
+
+<Layout title={`${data.name} 测速评测与优惠码（2026） - 梯子排行`} description={`${data.name}怎么样？为您提供${data.name}的最新套餐价格、流量详情、优惠码 ${data.couponCode || ''} 以及详细实测数据。`}>
+  <div class="max-w-4xl mx-auto px-4 py-10">
+    <div class="mb-6">
+      <a href="/brands" class="text-primary hover:text-white transition-colors flex items-center text-sm">
+        <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        返回品牌库
+      </a>
+    </div>
+
+    <!-- 品牌头部卡片 -->
+    <div class="glass-card p-8 rounded-2xl mb-12 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+      
+      <div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+        <div>
+          <h1 class="text-3xl md:text-5xl font-extrabold mb-4">{data.name}</h1>
+          <div class="flex flex-wrap gap-2 mb-6">
+            {data.tags.map(tag => (
+              <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300">{tag}</span>
+            ))}
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm mb-6">
+            <div>
+              <span class="block text-gray-500 mb-1">最低价格</span>
+              <span class="font-bold text-lg text-white">{data.currency} {data.minPrice}</span>
+            </div>
+            <div>
+              <span class="block text-gray-500 mb-1">支持设备</span>
+              <span class="font-bold text-lg text-white">{data.devices} 台</span>
+            </div>
+            <div>
+              <span class="block text-gray-500 mb-1">综合评分</span>
+              <span class="font-bold text-lg text-yellow-400">★ {data.rating.toFixed(1)}</span>
+            </div>
+            <div>
+              <span class="block text-gray-500 mb-1">更新时间</span>
+              <span class="font-bold text-lg text-white">{data.updatedDate.toISOString().split('T')[0]}</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex flex-col gap-3 min-w-[200px]">
+          <a href={data.link} target="_blank" rel="nofollow noopener" class="w-full py-4 bg-primary hover:bg-primary-dark text-white font-bold text-center rounded-xl transition-all shadow-[0_0_15px_rgba(14,165,233,0.3)] hover:shadow-[0_0_25px_rgba(14,165,233,0.5)]">
+            访问官网
+          </a>
+          
+          {data.couponCode && (
+            <div class="w-full p-4 border border-dashed border-secondary/50 rounded-xl bg-secondary/5 text-center relative group">
+              <span class="block text-xs text-gray-400 mb-1">{data.couponDesc || '专属优惠码'}</span>
+              <span class="block text-lg font-mono font-bold text-secondary mb-2">{data.couponCode}</span>
+              <button onclick={`navigator.clipboard.writeText('${data.couponCode}'); alert('优惠码已复制！')`} class="text-xs px-4 py-2 bg-secondary/20 hover:bg-secondary/40 text-white rounded-lg transition-colors w-full">
+                一键复制
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <!-- 优缺点 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+      <div class="glass-card p-6 border-t-4 border-t-green-500">
+        <h3 class="text-xl font-bold mb-4 flex items-center text-green-400">
+          <svg class="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path></svg>
+          主要优点
+        </h3>
+        <ul class="space-y-2 text-gray-300">
+          {data.pros.map(pro => (
+            <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> {pro}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="glass-card p-6 border-t-4 border-t-red-500">
+        <h3 class="text-xl font-bold mb-4 flex items-center text-red-400">
+          <svg class="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.096c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5"></path></svg>
+          主要缺点
+        </h3>
+        <ul class="space-y-2 text-gray-300">
+          {data.cons.map(con => (
+            <li class="flex items-start"><span class="text-red-500 mr-2">✗</span> {con}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- 正文内容 (Markdown渲染) -->
+    <article class="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-primary hover:prose-a:text-primary-dark prose-strong:text-white">
+      <Content />
+    </article>
+    
+    <div class="mt-12 p-6 glass-card border-l-4 border-l-yellow-500 text-sm text-gray-400">
+      <strong>免责声明：</strong> 本站提供的信息仅供参考。我们努力保持信息的准确性，但套餐价格和政策可能随时变动，请以官网最新信息为准。
+    </div>
+  </div>
+</Layout>

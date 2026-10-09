@@ -1,0 +1,40 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE_TITLE } from '../../consts';
+
+const topics = [
+  { title: '机场推荐 Top 10', link: '/recommendations', icon: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z' },
+  { title: '便宜机场 Top 10', link: '/topics/cheap', icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1' },
+  { title: '稳定机场 Top 10', link: '/topics/stable', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
+  { title: '高性价比机场 Top 10', link: '/topics/value', icon: 'M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3' },
+  { title: '高速机场 Top 10', link: '/topics/speed', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+  { title: '游戏低延迟机场', link: '/topics/gaming', icon: 'M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z' },
+  { title: '流媒体机场 Top 10', link: '/topics/streaming', icon: 'M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z' },
+  { title: '新手友好机场 Top 10', link: '/topics/newbie', icon: 'M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+  { title: '大流量机场 Top 10', link: '/topics/traffic', icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4' },
+  { title: '月付机场 Top 10', link: '/topics/monthly', icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' },
+];
+---
+
+<Layout title={`专题排行 - ${SITE_TITLE}`} description="2026年各大场景下的翻墙机场专题排行榜。">
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl font-bold mb-4">专题排行中心</h1>
+      <p class="text-xl text-gray-400">细分场景评测，精准匹配您的需求</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {topics.map(topic => (
+        <a href={topic.link} class="glass-card p-8 flex flex-col items-center text-center group hover:-translate-y-2 transition-transform">
+          <div class="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all shadow-lg">
+            <svg class="w-8 h-8 text-gray-300 group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={topic.icon}></path>
+            </svg>
+          </div>
+          <h2 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{topic.title}</h2>
+          <p class="text-gray-400 text-sm">点击查看 2026 年最新榜单与深度分析</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>

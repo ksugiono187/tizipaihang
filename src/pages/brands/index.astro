@@ -1,0 +1,80 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { SITE_TITLE } from '../../consts';
+
+const brands = await getCollection('brands');
+// 简单的按评分降序排列
+const sortedBrands = brands.sort((a, b) => b.data.rating - a.data.rating);
+---
+
+<Layout title={`品牌库 - ${SITE_TITLE}`} description="完整收录29家主流翻墙梯子与机场品牌，提供详细的参数对比、价格与专属优惠码。">
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">机场品牌大全</h1>
+      <p class="text-xl text-gray-400">完整收录全网29家主流品牌，持续更新评测数据与优惠</p>
+    </div>
+
+    <!-- 搜索与筛选 (占位UI，后续可加React/Alpine交互) -->
+    <div class="glass-card p-4 mb-10 flex flex-col md:flex-row gap-4 items-center">
+      <div class="relative w-full md:w-96">
+        <input type="text" placeholder="搜索品牌名称..." class="w-full bg-white/5 border border-white/10 rounded-lg py-2 pl-10 pr-4 text-white focus:outline-none focus:border-primary transition-colors" />
+        <svg class="w-5 h-5 absolute left-3 top-2.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      </div>
+      <div class="flex gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
+        <button class="px-4 py-2 rounded-lg bg-primary text-white text-sm whitespace-nowrap">全部品牌</button>
+        <button class="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 text-sm whitespace-nowrap transition-colors">含优惠码</button>
+        <button class="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 text-sm whitespace-nowrap transition-colors">支持流媒体</button>
+      </div>
+    </div>
+
+    <!-- 品牌列表 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {sortedBrands.map(brand => (
+        <a href={`/brands/${brand.id}`} class="glass-card p-6 block hover:-translate-y-1 transition-transform group">
+          <div class="flex justify-between items-start mb-4">
+            <h2 class="text-2xl font-bold group-hover:text-primary transition-colors">{brand.data.name}</h2>
+            <span class="bg-white/10 text-yellow-400 text-sm px-2 py-1 rounded">★ {brand.data.rating.toFixed(1)}</span>
+          </div>
+          
+          <div class="flex flex-wrap gap-1 mb-4">
+            {brand.data.tags.map(tag => (
+              <span class="text-xs text-gray-400 bg-white/5 px-2 py-1 rounded">{tag}</span>
+            ))}
+          </div>
+
+          <div class="space-y-2 text-sm text-gray-300 mb-6">
+            <div class="flex justify-between border-b border-white/5 pb-2">
+              <span class="text-gray-500">最低价格</span>
+              <span>{brand.data.currency} {brand.data.minPrice}</span>
+            </div>
+            <div class="flex justify-between border-b border-white/5 pb-2">
+              <span class="text-gray-500">支持协议</span>
+              <span class="truncate max-w-[150px]">{brand.data.protocols.join(', ')}</span>
+            </div>
+          </div>
+          
+          {brand.data.couponCode ? (
+            <div class="mt-4 py-2 text-center border border-secondary/30 bg-secondary/10 text-secondary rounded text-sm font-mono">
+              优惠码: {brand.data.couponCode}
+            </div>
+          ) : (
+            <div class="mt-4 py-2 text-center border border-white/5 text-gray-500 rounded text-sm">
+              查看详情
+            </div>
+          )}
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

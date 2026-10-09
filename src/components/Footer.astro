@@ -1,0 +1,57 @@
+---
+const today = new Date();
+import { SITE_TITLE } from '../consts';
+---
+
+<footer class="mt-20 border-t border-white/10 bg-slate-900/50 backdrop-blur-md pt-12 pb-8">
+  <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+    <div class="col-span-1 md:col-span-1">
+      <a href="/" class="flex items-center gap-2 mb-4 group">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-xl shadow-[0_0_15px_rgba(14,165,233,0.5)]">
+          梯
+        </div>
+        <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+          {SITE_TITLE}
+        </span>
+      </a>
+      <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+        提供专业的梯子推荐、机场评测、优惠码和使用教程，帮助您找到最适合、最稳定、性价比最高的网络服务。
+      </p>
+    </div>
+    
+    <div>
+      <h3 class="text-white font-semibold mb-4">热门专题</h3>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li><a href="/recommendations" class="hover:text-primary transition-colors">2026机场推荐</a></li>
+        <li><a href="/topics/cheap" class="hover:text-primary transition-colors">便宜机场推荐</a></li>
+        <li><a href="/topics/stable" class="hover:text-primary transition-colors">稳定机场推荐</a></li>
+        <li><a href="/topics/gaming" class="hover:text-primary transition-colors">游戏低延迟机场</a></li>
+      </ul>
+    </div>
+    
+    <div>
+      <h3 class="text-white font-semibold mb-4">资源库</h3>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li><a href="/brands" class="hover:text-primary transition-colors">品牌大全</a></li>
+        <li><a href="/reviews" class="hover:text-primary transition-colors">深度测评</a></li>
+        <li><a href="/coupons" class="hover:text-primary transition-colors">优惠码中心</a></li>
+        <li><a href="/tutorials" class="hover:text-primary transition-colors">使用教程</a></li>
+      </ul>
+    </div>
+    
+    <div>
+      <h3 class="text-white font-semibold mb-4">关于我们</h3>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li><a href="/about" class="hover:text-primary transition-colors">关于本站</a></li>
+        <li><a href="/methodology" class="hover:text-primary transition-colors">测评方法</a></li>
+        <li><a href="/privacy" class="hover:text-primary transition-colors">隐私政策</a></li>
+        <li><a href="/disclaimer" class="hover:text-primary transition-colors">免责声明</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+    <p>&copy; {today.getFullYear()} {SITE_TITLE}. All rights reserved.</p>
+    <p class="mt-2 md:mt-0">声明：本站部分链接可能包含推广佣金，但这不会影响我们的客观评测结果。</p>
+  </div>
+</footer>

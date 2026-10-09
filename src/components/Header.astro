@@ -1,0 +1,61 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 glass-card rounded-none border-t-0 border-x-0 border-b border-white/10 px-4 py-3">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 group">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-xl shadow-[0_0_15px_rgba(14,165,233,0.5)] group-hover:shadow-[0_0_25px_rgba(14,165,233,0.8)] transition-all">
+        梯
+      </div>
+      <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 group-hover:to-white transition-all">
+        {SITE_TITLE}
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center gap-6">
+      <HeaderLink href="/">首页</HeaderLink>
+      <HeaderLink href="/recommendations">机场推荐</HeaderLink>
+      <HeaderLink href="/brands">品牌库</HeaderLink>
+      <HeaderLink href="/topics">专题排行</HeaderLink>
+      <HeaderLink href="/reviews">机场测评</HeaderLink>
+      <HeaderLink href="/tutorials">教程中心</HeaderLink>
+      <HeaderLink href="/coupons">优惠码</HeaderLink>
+      <HeaderLink href="/blog">博客文章</HeaderLink>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 glass-card rounded-none border-t-0 border-x-0 border-b border-white/10 flex-col py-4 px-4 gap-4 shadow-xl">
+    <HeaderLink href="/" class="block">首页</HeaderLink>
+    <HeaderLink href="/recommendations" class="block">机场推荐</HeaderLink>
+    <HeaderLink href="/brands" class="block">品牌库</HeaderLink>
+    <HeaderLink href="/topics" class="block">专题排行</HeaderLink>
+    <HeaderLink href="/reviews" class="block">机场测评</HeaderLink>
+    <HeaderLink href="/tutorials" class="block">教程中心</HeaderLink>
+    <HeaderLink href="/coupons" class="block">优惠码</HeaderLink>
+    <HeaderLink href="/blog" class="block">博客文章</HeaderLink>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+    });
+  }
+</script>
