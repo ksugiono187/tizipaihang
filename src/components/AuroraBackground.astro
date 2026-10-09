@@ -2,51 +2,111 @@
 // AuroraBackground.astro
 ---
 
-<div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-slate-950">
+<div class="fixed inset-0 z-[-1] overflow-hidden bg-slate-950 pointer-events-none">
   <!-- 极光背景光晕 -->
-  <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/20 blur-[100px] animate-[pulse-glow_8s_ease-in-out_infinite_alternate]"></div>
-  <div class="absolute top-[20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-secondary/15 blur-[120px] animate-[pulse-glow_10s_ease-in-out_infinite_alternate-reverse]"></div>
-  <div class="absolute bottom-[-10%] left-[20%] w-[60%] h-[40%] rounded-full bg-accent/20 blur-[100px] animate-[pulse-glow_12s_ease-in-out_infinite_alternate]"></div>
+  <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-purple-600/30 blur-[100px] aurora-1 mix-blend-screen opacity-60 md:opacity-80"></div>
+  <div class="absolute top-[20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-blue-600/20 blur-[120px] aurora-2 mix-blend-screen opacity-50 md:opacity-70"></div>
+  <div class="absolute bottom-[-20%] left-[20%] w-[50%] h-[50%] rounded-full bg-cyan-600/20 blur-[90px] aurora-3 mix-blend-screen opacity-40 md:opacity-60"></div>
   
   <!-- 网格线背景 -->
   <div class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-10"></div>
   
-  <!-- 漂浮粒子 (使用 React 组件在客户端渲染，或在此处纯 CSS 渲染简单粒子) -->
-  <div id="particles-container" class="absolute inset-0 hidden sm:block">
-    <!-- Particles will be injected here or just use static css ones -->
-  </div>
+  <!-- 波浪线 -->
+  <svg class="absolute inset-0 w-full h-full opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 0,200 Q 400,300 800,100 T 1600,200" fill="none" stroke="#fff" stroke-width="1" class="pulse-line"></path>
+    <path d="M 0,600 Q 500,400 1000,700 T 2000,500" fill="none" stroke="#fff" stroke-width="1" class="pulse-line" style="animation-delay:2s"></path>
+  </svg>
+
+  <!-- 流星雨容器 -->
+  <div id="meteor-container" class="absolute inset-0 overflow-hidden opacity-60 md:opacity-90"></div>
+
+  <!-- 中心径向渐变，让中间显得深邃 -->
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_#030712_100%)] opacity-80"></div>
 </div>
 
 <style>
-  /* 基础极光光晕动画在 global.css 中定义 */
+  .aurora-1 { animation: aurora-1 15s ease-in-out infinite alternate; }
+  .aurora-2 { animation: aurora-2 20s ease-in-out infinite alternate-reverse; }
+  .aurora-3 { animation: aurora-3 18s ease-in-out infinite alternate; }
+  .pulse-line { animation: pulse-line 4s ease-in-out infinite alternate; }
+
+  @keyframes aurora-1 {
+    0% { transform: translateY(0) scale(1); opacity: 0.5; }
+    100% { transform: translateY(-50px) scale(1.1); opacity: 0.8; }
+  }
+  @keyframes aurora-2 {
+    0% { transform: translateX(0) scale(1); opacity: 0.4; }
+    100% { transform: translateX(-50px) scale(1.2); opacity: 0.7; }
+  }
+  @keyframes aurora-3 {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+    100% { transform: translate(30px, -30px) scale(1.1); opacity: 0.6; }
+  }
+  @keyframes pulse-line {
+    0% { opacity: 0.02; }
+    100% { opacity: 0.1; }
+  }
+
+  /* 流星样式 */
+  :global(.meteor) {
+    position: absolute;
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    transform: rotate(-45deg);
+    animation: meteor-fall linear infinite;
+    opacity: 0;
+  }
+  :global(.meteor::before) {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 2px rgba(255,255,255,0.8);
+  }
+
+  @keyframes meteor-fall {
+    0% {
+      transform: translate(0, 0) rotate(-45deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-1000px, 1000px) rotate(-45deg);
+      opacity: 0;
+    }
+  }
 </style>
 
 <script>
-  // 简单的纯 JS 粒子效果，避免加载大型库
+  // 动态生成流星雨
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  
   if (!prefersReducedMotion) {
-    const container = document.getElementById('particles-container');
+    const container = document.getElementById('meteor-container');
     if (container) {
-      const particleCount = 30;
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'absolute rounded-full bg-white/30';
+      const meteorCount = 20; // 流星数量
+      for (let i = 0; i < meteorCount; i++) {
+        const meteor = document.createElement('div');
+        meteor.className = 'meteor';
         
-        // 随机大小、位置、动画时长
-        const size = Math.random() * 3 + 1;
-        const left = Math.random() * 100;
-        const top = Math.random() * 100;
-        const duration = Math.random() * 20 + 10;
-        const delay = Math.random() * 5;
+        // 随机初始位置 (在右上角区域)
+        const left = Math.random() * 150; // 允许超出屏幕
+        const top = Math.random() * 50 - 20; // 偏上方
         
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${left}%`;
-        particle.style.top = `${top}%`;
-        particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite alternate`;
+        // 随机动画时长和延迟
+        const duration = Math.random() * 3 + 2; // 2-5秒
+        const delay = Math.random() * 10;
         
-        container.appendChild(particle);
+        meteor.style.left = `${left}%`;
+        meteor.style.top = `${top}%`;
+        meteor.style.animationDuration = `${duration}s`;
+        meteor.style.animationDelay = `${delay}s`;
+        
+        container.appendChild(meteor);
       }
     }
   }
