@@ -3,10 +3,11 @@ name: "梯子云 LadderCloud"
 link: "https://varnexa.ladderaff.com/#/?code=kuE4kqxo"
 
 rating: 4.15
+peakSpeed: "95.6%"
 tags: ["稳定", "高速", "高性价比"]
 features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["速度极快", "节点丰富", "稳定性佳"]
-cons: ["暂未发现明显缺点"]
+pros: ["非常适合游戏加速","UDP转发良好","全中转高速通道"]
+cons: ["晚高峰偶尔有轻微波动","部分冷门节点较少"]
 targetUsers: "适合需要稳定翻墙和高质量网络的用户"
 minPrice: "¥25/月起"
 minPriceValue: 15

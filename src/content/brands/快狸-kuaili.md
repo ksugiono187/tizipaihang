@@ -3,10 +3,11 @@ name: "快狸 KuaiLi"
 link: "https://work.kuailicloud.cc/#/?code=gVGJa0Mp"
 
 rating: 4.42
+peakSpeed: "95.8%"
 tags: ["稳定", "高速", "高性价比"]
 features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["速度极快", "节点丰富", "稳定性佳"]
-cons: ["暂未发现明显缺点"]
+pros: ["性价比极高","套餐选择灵活","支持支付宝/微信支付"]
+cons: ["测速受限于本地网络环境","不提供直连节点"]
 targetUsers: "适合需要稳定翻墙和高质量网络的用户"
 minPrice: "¥10/月起（年付折算）"
 minPriceValue: 15

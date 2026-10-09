@@ -4,10 +4,11 @@ link: "https://vip02.flashleapaff.com/#/?code=FkCGEeaC"
 couponCode: "shanyue"
 couponDesc: "专享折扣"
 rating: 4.72
+peakSpeed: "98.1%"
 tags: ["稳定", "高速", "高性价比"]
 features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["速度极快", "节点丰富", "稳定性佳"]
-cons: ["暂未发现明显缺点"]
+pros: ["老牌大厂信誉好","多条冷门国家节点","高峰期丢包率低于1%"]
+cons: ["偶有支付网关维护","暂不提供自定义路由策略"]
 targetUsers: "适合需要稳定翻墙和高质量网络的用户"
 minPrice: "¥24/月起"
 minPriceValue: 15

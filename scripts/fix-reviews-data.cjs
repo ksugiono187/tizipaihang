@@ -43,16 +43,16 @@ files.forEach(file => {
   // 随机生成 93.1% ~ 99.8% 之间的晚高峰速度
   const randomSpeed = (Math.random() * (99.8 - 93.1) + 93.1).toFixed(1) + '%';
   
-  // 替换 pros
-  content = content.replace(/pros:\s*\[.*?\]\n/, `pros: ${JSON.stringify(myPros)}\n`);
+  // 替换 pros (处理 \r\n 或 \n)
+  content = content.replace(/pros:\s*\[.*?\]\r?\n/, `pros: ${JSON.stringify(myPros)}\n`);
   // 替换 cons
-  content = content.replace(/cons:\s*\[.*?\]\n/, `cons: ${JSON.stringify(myCons)}\n`);
+  content = content.replace(/cons:\s*\[.*?\]\r?\n/, `cons: ${JSON.stringify(myCons)}\n`);
   
   // 添加 peakSpeed（如果存在则替换，否则在 rating 后面加）
-  if (content.match(/peakSpeed:\s*["']?.*?["']?\n/)) {
-    content = content.replace(/peakSpeed:\s*["']?.*?["']?\n/, `peakSpeed: "${randomSpeed}"\n`);
+  if (content.match(/peakSpeed:\s*["']?.*?["']?\r?\n/)) {
+    content = content.replace(/peakSpeed:\s*["']?.*?["']?\r?\n/, `peakSpeed: "${randomSpeed}"\n`);
   } else {
-    content = content.replace(/(rating:.*?)\n/, `$1\npeakSpeed: "${randomSpeed}"\n`);
+    content = content.replace(/(rating:.*?)\r?\n/, `$1\npeakSpeed: "${randomSpeed}"\n`);
   }
 
   fs.writeFileSync(filePath, content);

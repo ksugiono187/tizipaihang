@@ -4,10 +4,11 @@ link: "https://mdlky.gsyaff.com/#/?code=6tRWbtgK"
 couponCode: "jichangcha09"
 couponDesc: "专享折扣"
 rating: 4.36
+peakSpeed: "95.6%"
 tags: ["稳定", "高速", "高性价比"]
 features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["速度极快", "节点丰富", "稳定性佳"]
-cons: ["暂未发现明显缺点"]
+pros: ["自研协议抗封锁能力强","提供无限时流量套餐","工单回复及时"]
+cons: ["部分节点禁Ping","套餐售罄较快"]
 targetUsers: "适合需要稳定翻墙和高质量网络的用户"
 minPrice: "¥23/月起"
 minPriceValue: 15

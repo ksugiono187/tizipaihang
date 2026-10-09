@@ -3,10 +3,11 @@ name: "一翻云 1fly"
 link: "https://wzjc.1flyunaff.cc/#/?code=F7eaT191"
 
 rating: 4.54
+peakSpeed: "97.4%"
 tags: ["稳定", "高速", "高性价比"]
 features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["速度极快", "节点丰富", "稳定性佳"]
-cons: ["暂未发现明显缺点"]
+pros: ["性价比极高","套餐选择灵活","支持支付宝/微信支付"]
+cons: ["测速受限于本地网络环境","不提供直连节点"]
 targetUsers: "适合需要稳定翻墙和高质量网络的用户"
 minPrice: "¥25/月起"
 minPriceValue: 15

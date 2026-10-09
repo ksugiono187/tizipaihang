@@ -3,10 +3,11 @@ name: "浪网 WaveNet"
 link: "https://varnexa.wavenetaff.com/#/?code=oU77JXen"
 
 rating: 4.12
+peakSpeed: "99.3%"
 tags: ["稳定", "高速", "高性价比"]
 features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["速度极快", "节点丰富", "稳定性佳"]
-cons: ["暂未发现明显缺点"]
+pros: ["高规格服务器硬件","带宽充裕不超售","提供完善的文档教程"]
+cons: ["月付价格略贵","仅支持年付/半年付"]
 targetUsers: "适合需要稳定翻墙和高质量网络的用户"
 minPrice: "¥30/月起"
 minPriceValue: 15

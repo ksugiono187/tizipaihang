@@ -3,10 +3,11 @@ name: "边缘节点 EdgeNova"
 link: "https://work.edgenovaaff.cc/#/?code=z81zCfw1"
 
 rating: 4.51
+peakSpeed: "99.1%"
 tags: ["稳定", "高速", "高性价比"]
 features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["速度极快", "节点丰富", "稳定性佳"]
-cons: ["暂未发现明显缺点"]
+pros: ["性价比极高","套餐选择灵活","支持支付宝/微信支付"]
+cons: ["测速受限于本地网络环境","不提供直连节点"]
 targetUsers: "适合需要稳定翻墙和高质量网络的用户"
 minPrice: "约 ¥86/年起"
 minPriceValue: 15

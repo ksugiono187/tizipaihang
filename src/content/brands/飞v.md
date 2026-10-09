@@ -3,10 +3,11 @@ name: "飞V"
 link: "https://varnexa.flyvaff.com/#/?code=UoU2Izm5"
 
 rating: 4.18
+peakSpeed: "94.0%"
 tags: ["稳定", "高速", "高性价比"]
 features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["速度极快", "节点丰富", "稳定性佳"]
-cons: ["暂未发现明显缺点"]
+pros: ["主打极速纯专线","香港/日本节点极其稳定","无流媒体审计限制"]
+cons: ["最低套餐门槛较高","不支持退款"]
 targetUsers: "适合需要稳定翻墙和高质量网络的用户"
 minPrice: "¥4.9/月起"
 minPriceValue: 15

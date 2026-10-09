@@ -3,10 +3,11 @@ name: "速界 SuJie"
 link: "https://work.speedworldaff.cc/#/?code=wSjLCpIf"
 
 rating: 4.45
+peakSpeed: "95.7%"
 tags: ["稳定", "高速", "高性价比"]
 features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["速度极快", "节点丰富", "稳定性佳"]
-cons: ["暂未发现明显缺点"]
+pros: ["适合新手一键使用","提供专用傻瓜式客户端","流媒体解锁稳定"]
+cons: ["仅支持主流协议(V2Ray/Trojan)","缺乏冷门小众国家"]
 targetUsers: "适合需要稳定翻墙和高质量网络的用户"
 minPrice: "¥25/月起"
 minPriceValue: 15

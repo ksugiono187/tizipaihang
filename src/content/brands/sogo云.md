@@ -3,10 +3,11 @@ name: "Sogo云"
 link: "https://wzjc.sogoyunaff.cc/#/?code=2x2EywO9"
 
 rating: 4.6
+peakSpeed: "98.1%"
 tags: ["稳定", "高速", "高性价比"]
 features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["速度极快", "节点丰富", "稳定性佳"]
-cons: ["暂未发现明显缺点"]
+pros: ["IPLC专线延迟极低","不限制设备数量","客服响应速度快"]
+cons: ["节点更换频率较低","高峰期需手动切换更优节点"]
 targetUsers: "适合需要稳定翻墙和高质量网络的用户"
 minPrice: "¥25/月起"
 minPriceValue: 15
