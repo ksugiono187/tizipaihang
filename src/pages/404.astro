@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<Layout title={`404: 页面未找到 - ${SITE_TITLE}`} description="抱歉，您访问的页面不存在。">
+  <div class="min-h-[70vh] flex flex-col items-center justify-center px-4 relative z-10 text-center">
+    
+    <!-- 炫酷的发光背景元素 -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/20 rounded-full blur-[100px] -z-10"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] -z-10"></div>
+
+    <!-- 404 文字特效 -->
+    <h1 class="text-8xl md:text-[150px] font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-white/10 mb-4 tracking-tighter drop-shadow-2xl">
+      404
+    </h1>
+    
+    <div class="glass-card p-8 rounded-2xl max-w-lg w-full mb-8 relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-primary"></div>
+      <h2 class="text-2xl font-bold text-white mb-4">迷失在数字星海</h2>
+      <p class="text-gray-400 mb-6 leading-relaxed">
+        抱歉，您要寻找的节点或页面似乎已经失效、被移走或从未存在过。
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/" class="px-8 py-3 bg-primary hover:bg-primary-dark text-white font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(14,165,233,0.3)] hover:shadow-[0_0_30px_rgba(14,165,233,0.5)]">
+          返回首页
+        </a>
+        <a href="/recommendations" class="px-8 py-3 glass-card text-white font-bold rounded-xl hover:bg-white/10 transition-colors border border-white/20">
+          查看推荐榜单
+        </a>
+      </div>
+    </div>
+    
+  </div>
+</Layout>
