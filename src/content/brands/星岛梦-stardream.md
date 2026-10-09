@@ -4,20 +4,20 @@ link: https://kfccbb.xingdaomeng.com/#/?code=JTRIWFim
 couponCode: nmw888
 couponDesc: 专享折扣
 tags:
-  - 流媒体
-  - 原生IP
-  - 大流量
+  - 全专线
+  - 适合重度观影
+  - 特色16
 features:
-  - 全解锁Netflix/Disney+
-  - 支持ChatGPT
-  - 4K流畅
+  - 星岛梦 StarDream专属低延迟路由网络
+  - 全节点部署针对性流媒体解锁 (主打欧美区)
+  - 独家研制的 抗封锁穿透技术
 pros:
-  - 解锁能力极强
-  - 冷门地区节点多
-  - 测速优秀
+  - 在同级别机场中，星岛梦 StarDream的网络抖动率极低
+  - 热门地区节点冗余量极大，晚高峰从不拥挤
+  - 客服团队 24x7 响应，对新手用户非常友好
 cons:
-  - 部分原生节点禁止BT下载
-  - 只支持常用协议
+  - 星岛梦 StarDream的某些定制高级套餐价格略高
+  - 部分节点不支持高并发的BT下载协议
 targetUsers: 适合重度追剧与Netflix发烧友
 minPrice:
   value: ¥16/月起

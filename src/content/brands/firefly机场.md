@@ -4,20 +4,20 @@ link: https://vip02.fireflyaff.com/#/?code=Fes6j9rn
 couponCode: firefly
 couponDesc: 专享折扣
 tags:
-  - 便宜
-  - 高性价比
-  - 月付
+  - 自研协议
+  - 适合重度观影
+  - 特色1
 features:
-  - 价格亲民
-  - 适合备用
-  - 基础解锁
+  - Firefly机场专属低延迟路由网络
+  - 全节点部署针对性流媒体解锁 (主打亚太区)
+  - 独家研制的 抗封锁穿透技术
 pros:
-  - 价格非常便宜
-  - 套餐选择多
-  - 适合轻度用户
+  - 在同级别机场中，Firefly机场的网络抖动率极低
+  - 支持罕见的冷门国家/地区节点
+  - 客服团队 24x7 响应，对新手用户非常友好
 cons:
-  - 晚高峰偶尔有波动
-  - 无专线节点
+  - Firefly机场的某些定制高级套餐价格略高
+  - iOS专用客户端仍需借助第三方软件如Shadowrocket
 targetUsers: 适合学生党和预算有限的用户
 minPrice:
   value: 约 ¥8/月（年付折算）

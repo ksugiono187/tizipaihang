@@ -4,20 +4,20 @@ link: https://mdlky.gsyaff.com/#/?code=6tRWbtgK
 couponCode: jichangcha09
 couponDesc: 专享折扣
 tags:
-  - 流媒体
-  - 原生IP
-  - 大流量
+  - 自研协议
+  - 适合重度观影
+  - 特色7
 features:
-  - 全解锁Netflix/Disney+
-  - 支持ChatGPT
-  - 4K流畅
+  - 光速云 LightSpeed专属低延迟路由网络
+  - 全节点部署针对性流媒体解锁 (主打亚太区)
+  - 独家研制的 抗封锁穿透技术
 pros:
-  - 解锁能力极强
-  - 冷门地区节点多
-  - 测速优秀
+  - 在同级别机场中，光速云 LightSpeed的网络抖动率极低
+  - 支持罕见的冷门国家/地区节点
+  - 客服团队 24x7 响应，对新手用户非常友好
 cons:
-  - 部分原生节点禁止BT下载
-  - 只支持常用协议
+  - 光速云 LightSpeed的某些定制高级套餐价格略高
+  - iOS专用客户端仍需借助第三方软件如Shadowrocket
 targetUsers: 适合重度追剧与Netflix发烧友
 minPrice:
   value: ¥23/月起

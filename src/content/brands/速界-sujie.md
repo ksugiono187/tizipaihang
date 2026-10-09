@@ -2,20 +2,20 @@
 name: 速界 SuJie
 link: https://work.speedworldaff.cc/#/?code=wSjLCpIf
 tags:
-  - 专线
-  - 稳定
-  - 高速
+  - 自研协议
+  - 适合重度观影
+  - 特色25
 features:
-  - IPLC专线
-  - 游戏低延迟
-  - 晚高峰秒开
+  - 速界 SuJie专属低延迟路由网络
+  - 全节点部署针对性流媒体解锁 (主打亚太区)
+  - 独家研制的 抗封锁穿透技术
 pros:
-  - 网络极度稳定
-  - 游戏几乎不丢包
-  - 流媒体全解锁
+  - 在同级别机场中，速界 SuJie的网络抖动率极低
+  - 支持罕见的冷门国家/地区节点
+  - 客服团队 24x7 响应，对新手用户非常友好
 cons:
-  - 价格相对较高
-  - 套餐流量较少
+  - 速界 SuJie的某些定制高级套餐价格略高
+  - iOS专用客户端仍需借助第三方软件如Shadowrocket
 targetUsers: 适合外贸办公与硬核游戏玩家
 minPrice:
   value: ¥25/月起

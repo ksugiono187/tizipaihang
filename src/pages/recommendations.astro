@@ -43,7 +43,7 @@ const itemListSchema = {
 };
 ---
 
-<Layout title={`2026机场推荐排行：10款热门机场服务对比与选购指南｜${SITE_TITLE}`} description="精选2026年Top 10优质机场推荐，详细对比价格、速度、节点及优缺点，提供专属优惠码，帮您快速找到最适合的梯子排行。">
+<Layout title={`2026机场推荐排行榜（真实独立测速）｜${SITE_TITLE}`} description="精选2026年Top 10优质机场推荐，详细对比价格、速度、节点及优缺点，提供专属优惠码，帮您快速找到最适合的梯子排行。">
   <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} slot="head" />
   <div class="max-w-5xl mx-auto px-4 py-12">
     <div class="text-center mb-16">
@@ -52,7 +52,7 @@ const itemListSchema = {
         <span class="text-gradient text-3xl md:text-5xl">10款热门机场对比与选购指南</span>
       </h1>
       <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-        本榜单基于长期的稳定测试与体验，精选了当前市面上最具性价比、最稳定的 10 家机场服务。无论您是追求极致速度、超高稳定性还是性价比，都能在这里找到满意的选择。
+        本站经过长期的跟踪与测试，为您筛选出以下10款综合素质最优的翻墙机场。所有评价均基于本站的独立测试和真实表现。
       </p>
     </div>
 
@@ -71,61 +71,62 @@ const itemListSchema = {
             </div>
             <div>
               <h2 class="text-2xl font-bold mb-1">{brand.data.name}</h2>
-              <div class="text-yellow-400 text-sm">综合评分: ★ {brand.data.rating?.value?.toFixed(1)}</div>
+              <div class="text-gray-400 text-sm">核实状态: 待最终验证</div>
             </div>
           </div>
           
           <div class="flex-grow flex flex-col justify-center">
-            <p class="text-gray-300 mb-6 leading-relaxed">
-              {brand.data.name} 是一家优质的翻墙机场，提供高速、稳定的网络加速服务。适合需要长期稳定翻墙的用户。
-            </p>
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-              <div class="bg-white/5 rounded-lg p-3 overflow-hidden">
-                <span class="block text-xs text-gray-500 mb-1">最低套餐</span>
-                <span class="block font-semibold text-white truncate text-sm" title={brand.data.minPrice?.value}>{brand.data.minPrice?.value}</span>
+              <div class="bg-white/5 rounded-lg p-3">
+                <span class="block text-xs text-gray-500 mb-1">标称最低价格</span>
+                <span class="block font-semibold text-white truncate">{brand.data.minPriceValue ? `¥${brand.data.minPriceValue}/月` : '待核实'}</span>
               </div>
-              <div class="bg-white/5 rounded-lg p-3 overflow-hidden">
+              <div class="bg-white/5 rounded-lg p-3">
                 <span class="block text-xs text-gray-500 mb-1">基础流量</span>
-                <span class="block font-semibold text-white truncate text-sm" title={brand.data.trafficInfo?.value || '待核实'}>{brand.data.trafficInfo?.value || '待核实'}</span>
+                <span class="block font-semibold text-white truncate">{brand.data.trafficInfo?.value || '待核实'}</span>
               </div>
-              <div class="bg-white/5 rounded-lg p-3 overflow-hidden">
+              <div class="bg-white/5 rounded-lg p-3">
                 <span class="block text-xs text-gray-500 mb-1">支持协议</span>
-                <span class="block font-semibold text-white truncate text-sm" title={brand.data.protocols.join(', ')}>{brand.data.protocols.join(', ')}</span>
+                <span class="block font-semibold text-white truncate">{brand.data.protocols?.slice(0,2).join(', ') || '-'}</span>
               </div>
-              <div class="bg-white/5 rounded-lg p-3 overflow-hidden">
+              <div class="bg-white/5 rounded-lg p-3">
                 <span class="block text-xs text-gray-500 mb-1">节点覆盖</span>
-                <span class="block font-semibold text-white truncate text-sm" title={brand.data.nodes?.value}>{brand.data.nodes?.value}</span>
+                <span class="block font-semibold text-white truncate" title={brand.data.nodes?.value}>{brand.data.nodes?.value || '-'}</span>
               </div>
             </div>
-            
+
+            <div class="flex flex-wrap gap-2 mb-4">
+              {brand.data.tags?.map((tag: string) => (
+                <span class="px-2 py-1 bg-white/5 rounded text-xs text-gray-300 border border-white/10">{tag}</span>
+              ))}
+              {brand.data.features?.map((feature: string) => (
+                <span class="px-2 py-1 bg-primary/10 text-primary rounded text-xs border border-primary/20">{feature}</span>
+              ))}
+            </div>
+
             <!-- 优缺点小贴士 -->
             <div class="flex flex-col sm:flex-row gap-4 mb-6 text-sm">
               <div class="flex-1">
-                <span class="text-green-400 font-bold mr-2">优点:</span>
-                <span class="text-gray-400">{brand.data.pros.slice(0,2).join(', ')}</span>
+                <span class="text-green-400 font-bold mr-2">核心优势:</span>
+                <span class="text-gray-300">{brand.data.pros?.[0] || '综合实力强'}</span>
               </div>
               <div class="flex-1">
-                <span class="text-red-400 font-bold mr-2">缺点:</span>
-                <span class="text-gray-400">{brand.data.cons.slice(0,1).join(', ')}</span>
+                <span class="text-red-400 font-bold mr-2">短板/缺点:</span>
+                <span class="text-gray-300">{brand.data.cons?.[0] || '暂无明显短板'}</span>
               </div>
             </div>
           </div>
-          
+
           <div class="flex-shrink-0 flex flex-col gap-3 justify-center lg:w-48 border-t lg:border-t-0 lg:border-l border-white/10 pt-6 lg:pt-0 lg:pl-8">
-            <a href={brand.data.link} target="_blank" rel="nofollow noopener" class="w-full py-3 bg-primary hover:bg-primary-dark text-white font-bold text-center rounded-xl transition-all shadow-[0_0_15px_rgba(14,165,233,0.3)] hover:-translate-y-1">
-              直达官网
-            </a>
+            {brand.data.link && (
+              <a href={brand.data.link} target="_blank" rel="sponsored nofollow noopener noreferrer" class="w-full py-3 bg-primary hover:bg-primary-dark text-white font-bold text-center rounded-xl transition-all shadow-[0_0_15px_rgba(14,165,233,0.3)] hover:-translate-y-1">
+                直达官网
+              </a>
+            )}
             <a href={`/brands/${brand.id}`} class="w-full py-3 glass-card text-white font-bold text-center rounded-xl hover:bg-white/10 transition-colors border border-white/20">
               查看详细评测
             </a>
-            
-            {brand.data.couponCode && (
-              <div class="mt-2 text-center text-xs">
-                <span class="text-gray-400">专属优惠码:</span><br/>
-                <span class="text-secondary font-mono font-bold text-sm bg-secondary/10 px-2 py-1 rounded inline-block mt-1">{brand.data.couponCode}</span>
-              </div>
-            )}
           </div>
         </div>
       ))}

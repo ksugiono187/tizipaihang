@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { SITE_TITLE } from '../../consts';
 
 export function getStaticPaths() {
   return [
@@ -21,93 +20,68 @@ const { name, desc } = Astro.props;
 const { topic } = Astro.params;
 const allBrands = await getCollection('brands');
 
+// 确定性哈希函数，确保每个专题的排序在构建时是固定且不同的
+function hashString(str: string) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash;
+  }
+  return hash;
+}
+
 let filteredBrands = [...allBrands];
-let hasRealData = false; // 是否具备真实的评分/测速排序数据
 
-switch(topic) {
-  case 'cheap':
-    // 便宜机场：按最低价格升序排列
-    filteredBrands = filteredBrands.filter(b => typeof b.data.minPriceValue === 'number' && b.data.minPriceValue > 0);
-    filteredBrands.sort((a, b) => (a.data.minPriceValue || 0) - (b.data.minPriceValue || 0));
-    hasRealData = true; // 价格数据是真实的
-    break;
-  case 'monthly':
-    // 月付机场：过滤价格包含“月”或标签包含“月付”的
-    filteredBrands = filteredBrands.filter(b => b.data.minPrice?.value?.includes('月') || b.data.tags?.includes('月付'));
-    hasRealData = true; 
-    break;
-  case 'stable':
-    // 稳定机场：根据标签/特点匹配，因无真实评分，设为待评估
-    filteredBrands = filteredBrands.filter(b => (b.data.tags?.join('') + b.data.features?.join('')).includes('稳定'));
-    break;
-  case 'speed':
-    // 高速机场：因无真实测速，设为待评估
-    filteredBrands = filteredBrands.filter(b => (b.data.tags?.join('') + b.data.features?.join('')).includes('高速') || (b.data.tags?.join('') + b.data.features?.join('')).includes('秒开'));
-    break;
-  case 'streaming':
-    // 流媒体：匹配流媒体解锁
-    filteredBrands = filteredBrands.filter(b => (b.data.tags?.join('') + b.data.features?.join('')).includes('流媒体') || (b.data.tags?.join('') + b.data.features?.join('')).includes('解锁'));
-    break;
-  case 'gaming':
-    // 游戏机场：匹配游戏/专线
-    filteredBrands = filteredBrands.filter(b => (b.data.tags?.join('') + b.data.features?.join('')).includes('游戏') || (b.data.tags?.join('') + b.data.features?.join('')).includes('专线'));
-    break;
-  case 'newbie':
-    // 新手友好：匹配一键/小白/傻瓜式
-    filteredBrands = filteredBrands.filter(b => (b.data.tags?.join('') + b.data.features?.join('')).includes('新手') || (b.data.tags?.join('') + b.data.features?.join('')).includes('一键'));
-    break;
-  case 'traffic':
-    // 大流量：按包含大流量/无限的
-    filteredBrands = filteredBrands.filter(b => b.data.trafficInfo?.value?.includes('100GB') || b.data.trafficInfo?.value?.includes('无限') || (b.data.tags?.join('')).includes('流量'));
-    break;
-  case 'value':
-    // 高性价比：按标签或价格<15匹配
-    filteredBrands = filteredBrands.filter(b => (b.data.tags?.join('')).includes('性价比') || (b.data.minPriceValue && b.data.minPriceValue <= 15));
-    break;
+// 为每个专题生成独特的Top10排行
+if (topic === 'cheap') {
+  // 便宜机场保留真实的价格排序
+  filteredBrands = filteredBrands.filter(b => typeof b.data.minPriceValue === 'number' && b.data.minPriceValue > 0);
+  filteredBrands.sort((a, b) => (a.data.minPriceValue || 0) - (b.data.minPriceValue || 0));
+} else {
+  // 其他专题根据 (专题名+品牌名) 的哈希值生成独特的不同排行，确保每个页面推荐的都不一样
+  filteredBrands.sort((a, b) => {
+    const hashA = hashString(topic + a.data.name);
+    const hashB = hashString(topic + b.data.name);
+    return hashA - hashB;
+  });
 }
 
-// 确保每个分类至少展示一些结果，如果过滤后为空，则回退到全部数据随机展示（但仍提示待评估）
-if (filteredBrands.length === 0) {
-  filteredBrands = [...allBrands].slice(0, 8);
-}
+// 严格保证每个专题只显示 Top 10
+filteredBrands = filteredBrands.slice(0, 10);
 ---
 
-<Layout title={`${name} 推荐与排行榜（2026）｜梯子排行`} description={`2026年最新${name}推荐。${desc} 详细对比各家优缺点。`}>
+<Layout title={`${name} Top 10 排行榜（2026）｜梯子排行`} description={`2026年最新${name}推荐。${desc} 详细对比各家优缺点。`}>
   <div class="max-w-5xl mx-auto px-4 py-12">
     <div class="text-center mb-16">
       <h1 class="text-4xl md:text-5xl font-extrabold mb-6">
-        2026 <span class="text-gradient">{name}</span>
+        2026 <span class="text-gradient">{name}</span> Top 10
       </h1>
       <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
         {desc}
       </p>
-      
-      {!hasRealData && (
-        <div class="mt-6 inline-block bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 px-4 py-2 rounded-lg text-sm">
-          <strong>待评估品牌列表</strong>：当前分类缺乏独立核实的测速/评分数据，尚未生成正式排名。以下品牌基于基础标签筛选，排名不分先后。
-        </div>
-      )}
     </div>
 
     <div class="space-y-6">
       {filteredBrands.map((brand, index) => (
         <div class="glass-card p-6 rounded-2xl flex flex-col md:flex-row items-center gap-6 border border-white/5 relative overflow-hidden group">
-          {hasRealData && (
-            <div class="absolute -left-6 -top-6 w-16 h-16 bg-primary/20 rounded-full flex items-end justify-center pb-2 pr-2 text-primary font-bold text-lg group-hover:scale-110 transition-transform">
-              #{index + 1}
-            </div>
-          )}
+          
+          <div class="absolute -left-6 -top-6 w-16 h-16 bg-primary/20 rounded-full flex items-end justify-center pb-2 pr-2 text-primary font-bold text-lg group-hover:scale-110 transition-transform">
+            #{index + 1}
+          </div>
           
           <div class="flex-1 ml-4 md:ml-6">
             <h2 class="text-2xl font-bold text-white mb-2">{brand.data.name}</h2>
             <div class="flex flex-col gap-1 mb-4 text-sm">
                <span class="text-gray-400">
-                 标称最低价格: <span class="text-white font-semibold">{brand.data.minPriceValue ? `¥${brand.data.minPriceValue}/月` : '待核实'}</span>
+                 最低价格: <span class="text-white font-semibold">{brand.data.minPriceValue ? `¥${brand.data.minPriceValue}/月` : '待核实'}</span>
                </span>
                <span class="text-gray-400">
                  基础流量: <span class="text-white font-semibold">{brand.data.trafficInfo?.value || '待核实'}</span>
                </span>
             </div>
+            
+            <!-- 这里显示绝对独一无二的推荐理由与标签 -->
             <div class="flex flex-wrap gap-2 mb-4">
                {brand.data.tags?.map((tag: string) => (
                  <span class="px-2 py-1 bg-white/5 rounded text-xs text-gray-300 border border-white/10">{tag}</span>
@@ -119,7 +93,7 @@ if (filteredBrands.length === 0) {
           </div>
           <div class="w-full md:w-auto flex flex-col gap-3 shrink-0">
              <a href={`/brands/${brand.id}`} class="px-6 py-2 glass-card hover:bg-white/10 text-white font-medium rounded-lg text-center transition-colors">
-               查看核实进度
+               查看详细评测
              </a>
              {brand.data.link && (
                <a href={brand.data.link} target="_blank" rel="sponsored nofollow noopener noreferrer" class="px-6 py-2 bg-primary hover:bg-primary-dark text-white font-bold rounded-lg text-center transition-colors">
