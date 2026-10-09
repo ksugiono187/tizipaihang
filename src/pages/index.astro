@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PingTester from '../components/PingTester.astro';
+import { SITE_KEYWORDS } from '../consts';
 
 // 模拟数据用于占位
 const top10 = [
@@ -10,7 +11,7 @@ const top10 = [
 ];
 ---
 
-<Layout title="梯子推荐与机场推荐排行（2026）｜梯子排行" description="梯子排行提供2026年梯子推荐、机场推荐、套餐价格比较、优惠码、机场测评和网络工具教程，帮助用户了解不同机场服务的特点与适用场景。">
+<Layout title="梯子推荐与机场推荐排行（2026）｜梯子排行" description="梯子排行提供2026年梯子推荐、机场推荐、套餐价格比较、优惠码、机场测评和网络工具教程，帮助用户了解不同机场服务的特点与适用场景。" keywords={SITE_KEYWORDS}>
   <!-- Hero Section -->
   <section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden px-4">
     <div class="text-center z-10 max-w-4xl mx-auto mt-[-10vh]">
