@@ -5,7 +5,21 @@ import { SITE_TITLE } from '../consts';
 
 const allBrands = await getCollection('brands');
 
-// 确定性哈希函数，用于固定排序
+// 严格按照用户指定的顺序，前十名必须与推荐榜一致
+const targetOrder = [
+  "微风网络 Breezenet",
+  "飞猫云",
+  "暮光网络",
+  "大佬云",
+  "Firefly机场",
+  "灵猫",
+  "闪跃 FlashLeap",
+  "无忧链接",
+  "跨界云",
+  "二猫云 2mao"
+];
+
+// 确定性哈希函数，用于10名之后的固定排序
 function hashString(str: string) {
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
@@ -16,8 +30,25 @@ function hashString(str: string) {
   return hash;
 }
 
-// 随机但不乱序地排列所有品牌
-const sortedBrands = allBrands.sort((a, b) => hashString(a.data.name) - hashString(b.data.name));
+// 排序逻辑：
+// 1. 如果都在 targetOrder 中，按 targetOrder 索引排序
+// 2. 如果一个在，一个不在，在的排前面
+// 3. 如果都不在，按哈希值伪随机排序
+const sortedBrands = allBrands.sort((a, b) => {
+  const indexA = targetOrder.indexOf(a.data.name);
+  const indexB = targetOrder.indexOf(b.data.name);
+
+  if (indexA !== -1 && indexB !== -1) {
+    return indexA - indexB; // 都在前10中，按预定顺序
+  } else if (indexA !== -1) {
+    return -1; // a 在前10中，a 排前面
+  } else if (indexB !== -1) {
+    return 1;  // b 在前10中，b 排前面
+  } else {
+    // 都不在 targetOrder 中，按哈希排序
+    return hashString(a.data.name) - hashString(b.data.name);
+  }
+});
 ---
 
 <Layout title={`深度机场测评与实测监控（进行中）｜梯子排行`} description="2026年最新机场测评跟踪。我们将从速度、稳定性、流媒体解锁等维度为您提供真实的梯子测评数据。">
