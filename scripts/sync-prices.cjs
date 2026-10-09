@@ -23,17 +23,20 @@ https.get(URL, (res) => {
       const nameMatch = articleHtml.match(/<h3[^>]*>([^<]+)<\/h3>/);
       const priceMatch = articleHtml.match(/<span[^>]*>起步价格<\/span><span[^>]*title="([^"]+)"[^>]*>/);
       const trafficMatch = articleHtml.match(/<span[^>]*>基础流量<\/span><span[^>]*>([^<]+)<\/span>/);
+      const couponMatch = articleHtml.match(/专属优惠码<\/span><\/div><div[^>]*>([a-zA-Z0-9_]+)</i);
       
       if (nameMatch) {
         const name = nameMatch[1].trim();
         const priceStr = priceMatch ? priceMatch[1] : '待核实';
         const trafficStr = trafficMatch ? trafficMatch[1] : '待核实';
+        const couponStr = couponMatch ? couponMatch[1] : '';
         
         extractedData.push({
           name: name,
           priceStr: priceStr,
-          minPrice: priceStr, // Keep the full string like "¥8/月起" or "约 ¥7/月起" or just the number if we want
-          trafficStr: trafficStr
+          minPrice: priceStr,
+          trafficStr: trafficStr,
+          couponCode: couponStr
         });
       }
     }
@@ -53,22 +56,26 @@ https.get(URL, (res) => {
       const matchedData = extractedData.find(d => localName.includes(d.name) || d.name.includes(localName));
       
       if (matchedData) {
-        // 更新 frontmatter 中的 minPrice (处理可能是数字或 "待核实" 的情况)
+        // 更新 frontmatter
         content = content.replace(/minPrice:\s*["']?.*?["']?\n/, `minPrice: "${matchedData.minPrice}"\n`);
-        
-        // 更新 trafficInfo
         content = content.replace(/trafficInfo:\s*["']?.*?["']?\n/, `trafficInfo: "${matchedData.trafficStr}"\n`);
+        
+        if (matchedData.couponCode) {
+          // Check if couponCode exists in frontmatter
+          if (content.match(/couponCode:\s*["']?.*?["']?\n/)) {
+            content = content.replace(/couponCode:\s*["']?.*?["']?\n/, `couponCode: "${matchedData.couponCode}"\n`);
+          } else {
+            // Insert it after name
+            content = content.replace(/(name:.*?)\n/, `$1\ncouponCode: "${matchedData.couponCode}"\n`);
+          }
+        }
         
         // 更新日期
         const today = new Date().toISOString().split('T')[0];
         content = content.replace(/updatedDate:\s*["']?.*?["']?\n/, `updatedDate: "${today}"\n`);
-        
-        // 正文中替换
-        content = content.replace(/\*数据待核实。请前往官网查看最新价格。\*/, `**起步套餐价格：** ${matchedData.minPrice}`);
-        content = content.replace(/\*数据待核实。\*/, `**基础套餐流量：** ${matchedData.trafficStr}`);
 
         fs.writeFileSync(filePath, content);
-        console.log(`✅ 已同步: ${localName} -> 价格: ${matchedData.minPrice}, 流量: ${matchedData.trafficStr}`);
+        console.log(`✅ 已同步: ${localName} -> 价格: ${matchedData.minPrice}, 流量: ${matchedData.trafficStr}, 优惠码: ${matchedData.couponCode || '无'}`);
         updateCount++;
       }
     });
