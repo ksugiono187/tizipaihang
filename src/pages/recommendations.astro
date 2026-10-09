@@ -81,21 +81,21 @@ const itemListSchema = {
             </p>
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-              <div class="bg-white/5 rounded-lg p-3">
+              <div class="bg-white/5 rounded-lg p-3 overflow-hidden">
                 <span class="block text-xs text-gray-500 mb-1">最低套餐</span>
-                <span class="font-semibold text-white">{brand.data.currency} {brand.data.minPrice}</span>
+                <span class="block font-semibold text-white truncate text-sm">{brand.data.currency} {brand.data.minPrice}</span>
               </div>
-              <div class="bg-white/5 rounded-lg p-3">
+              <div class="bg-white/5 rounded-lg p-3 overflow-hidden">
                 <span class="block text-xs text-gray-500 mb-1">支持协议</span>
-                <span class="font-semibold text-white truncate text-sm" title={brand.data.protocols.join(', ')}>{brand.data.protocols.join(', ')}</span>
+                <span class="block font-semibold text-white truncate text-sm" title={brand.data.protocols.join(', ')}>{brand.data.protocols.join(', ')}</span>
               </div>
-              <div class="bg-white/5 rounded-lg p-3">
+              <div class="bg-white/5 rounded-lg p-3 overflow-hidden">
                 <span class="block text-xs text-gray-500 mb-1">设备限制</span>
-                <span class="font-semibold text-white">{brand.data.devices} 台</span>
+                <span class="block font-semibold text-white truncate text-sm">{brand.data.devices} 台</span>
               </div>
-              <div class="bg-white/5 rounded-lg p-3">
+              <div class="bg-white/5 rounded-lg p-3 overflow-hidden">
                 <span class="block text-xs text-gray-500 mb-1">节点覆盖</span>
-                <span class="font-semibold text-white truncate text-sm" title={brand.data.nodes}>{brand.data.nodes}</span>
+                <span class="block font-semibold text-white truncate text-sm" title={brand.data.nodes}>{brand.data.nodes}</span>
               </div>
             </div>
             
