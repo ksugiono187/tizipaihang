@@ -9,7 +9,7 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://fanqiangtizi.wiki',
+  site: 'https://tizipaihang.wiki',
   integrations: [mdx(), sitemap(), react()],
 
   fonts: [

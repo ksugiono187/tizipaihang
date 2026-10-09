@@ -26,14 +26,7 @@ const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": data.name,
-  "description": `${data.name}怎么样？最新套餐价格、流量详情及评测。`,
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": data.rating,
-    "bestRating": "5",
-    "worstRating": "1",
-    "ratingCount": "100" // Mock data for valid schema
-  }
+  "description": `${data.name}怎么样？最新套餐价格、流量详情及评测。`
 };
 ---
 

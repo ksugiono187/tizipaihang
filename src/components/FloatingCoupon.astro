@@ -3,41 +3,45 @@
 import { getCollection } from 'astro:content';
 
 const brands = await getCollection('brands');
-// 挑选出有优惠码的品牌
 const couponBrands = brands.filter(b => b.data.couponCode);
 
-// 随机挑一个
-const randomBrand = couponBrands.length > 0 ? couponBrands[Math.floor(Math.random() * couponBrands.length)] : null;
+// 为了避免过度干扰用户，我们只推荐确实带有优惠码的品牌
+// 此处改为展示一个固定的优质推荐或每日推荐
+const recommendedBrand = couponBrands.find(b => b.data.name.includes('微风')) || couponBrands[0];
 ---
 
-{randomBrand && (
-  <div id="floating-coupon" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-700 ease-out max-w-sm w-[calc(100%-3rem)] md:w-80 pointer-events-none">
-    <div class="glass-card p-6 rounded-2xl relative shadow-[0_10px_40px_rgba(14,165,233,0.3)] border border-primary/30 overflow-hidden pointer-events-auto">
-      <div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/20 rounded-full blur-2xl"></div>
+{recommendedBrand && (
+  <div id="floating-coupon" class="fixed bottom-6 right-6 z-40 transform translate-y-32 opacity-0 transition-all duration-700 ease-out max-w-sm w-[calc(100%-3rem)] md:w-80 pointer-events-none">
+    <div class="glass-card p-6 rounded-2xl relative shadow-xl border border-white/10 overflow-hidden pointer-events-auto">
       
-      <button id="close-coupon" class="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors">
+      <button id="close-coupon" class="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors" aria-label="关闭提示">
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
       </button>
 
       <div class="flex items-center gap-2 mb-3">
-        <span class="text-2xl">🎁</span>
-        <h4 class="font-bold text-white text-lg">限时专属福利</h4>
+        <span class="text-xl">🏷️</span>
+        <h4 class="font-bold text-white text-md">专属优惠码推荐</h4>
       </div>
       
-      <p class="text-sm text-gray-300 mb-4 leading-relaxed">
-        恭喜您随机获得 <span class="text-primary font-bold">{randomBrand.data.name}</span> 专属优惠折扣！
+      <p class="text-xs text-gray-400 mb-4 leading-relaxed">
+        本站为您收录了 <span class="text-blue-400 font-bold">{recommendedBrand.data.name}</span> 的专属折扣，购机可享受优惠。
       </p>
 
-      <div class="bg-black/30 border border-white/10 rounded-xl p-3 flex justify-between items-center mb-4">
-        <span id="coupon-code-text" class="font-mono font-bold text-secondary text-lg tracking-wider">{randomBrand.data.couponCode}</span>
-        <button id="copy-coupon-btn" class="text-xs px-3 py-1.5 bg-secondary/20 hover:bg-secondary/40 text-secondary hover:text-white rounded-lg transition-colors font-medium">
-          复制
+      <div class="bg-black/30 border border-white/5 rounded-xl p-3 flex justify-between items-center mb-4">
+        <span id="coupon-code-text" class="font-mono font-bold text-blue-300 text-base tracking-wider">{recommendedBrand.data.couponCode}</span>
+        <button id="copy-coupon-btn" class="text-xs px-3 py-1.5 bg-blue-500/20 hover:bg-blue-500/40 text-blue-300 hover:text-white rounded-lg transition-colors font-medium">
+          复制优惠码
         </button>
       </div>
 
-      <a href={randomBrand.data.link} target="_blank" rel="nofollow noopener" class="block w-full py-2.5 bg-primary hover:bg-primary-dark text-white font-bold text-center rounded-xl transition-all shadow-lg hover:shadow-primary/50 text-sm">
-        立即前往使用
-      </a>
+      <div class="flex gap-2">
+        <a href="/coupons" class="w-1/3 py-2 bg-white/5 hover:bg-white/10 text-gray-300 font-medium text-center rounded-lg transition-all text-xs border border-white/10">
+          查看更多
+        </a>
+        <a href={recommendedBrand.data.link} target="_blank" rel="sponsored nofollow noopener noreferrer" class="w-2/3 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold text-center rounded-lg transition-all shadow text-xs">
+          前往官网使用
+        </a>
+      </div>
     </div>
   </div>
 
@@ -50,28 +54,27 @@ const randomBrand = couponBrands.length > 0 ? couponBrands[Math.floor(Math.rando
 
       if (!couponDiv) return;
 
-      // 判断是否已经关闭过
       const hasClosed = sessionStorage.getItem('couponClosed');
       if (hasClosed) return;
 
-      // 页面停留 10 秒后弹出
+      // 页面停留一段时间后温和展示
       setTimeout(() => {
         couponDiv.classList.remove('translate-y-32', 'opacity-0');
-      }, 10000);
+      }, 8000);
 
       // 复制功能
       if (copyBtn && codeText) {
         copyBtn.addEventListener('click', async () => {
           try {
             await navigator.clipboard.writeText(codeText.innerText);
-            copyBtn.textContent = '已复制!';
-            copyBtn.classList.replace('text-secondary', 'text-white');
-            copyBtn.classList.replace('bg-secondary/20', 'bg-green-500');
+            copyBtn.textContent = '已复制 ✓';
+            copyBtn.classList.add('bg-green-600', 'text-white');
+            copyBtn.classList.remove('bg-blue-500/20', 'text-blue-300');
             setTimeout(() => {
-              copyBtn.textContent = '复制';
-              copyBtn.classList.replace('bg-green-500', 'bg-secondary/20');
-              copyBtn.classList.replace('text-white', 'text-secondary');
-            }, 2000);
+              copyBtn.textContent = '复制优惠码';
+              copyBtn.classList.remove('bg-green-600', 'text-white');
+              copyBtn.classList.add('bg-blue-500/20', 'text-blue-300');
+            }, 3000);
           } catch (err) {
             console.error('Failed to copy', err);
           }

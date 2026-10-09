@@ -20,9 +20,8 @@ export function getStaticPaths() {
 const { name, desc } = Astro.props;
 const brands = await getCollection('brands');
 
-// 简单通过随机打乱来模拟不同榜单，未来需要通过真实数据标签来筛选
-const shuffled = [...brands].sort(() => 0.5 - Math.random());
-const topBrands = shuffled.slice(0, 10);
+// 移除随机排名，全部基于真实评分数据排序
+const topBrands = [...brands].sort((a, b) => b.data.rating - a.data.rating).slice(0, 10);
 ---
 
 <Layout title={`${name} Top 10 排行榜（2026） - ${SITE_TITLE}`} description={`2026年最新${name}推荐排行，${desc} 详细对比各家优缺点。`}>
