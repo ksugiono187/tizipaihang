@@ -49,7 +49,7 @@ devices:
   value: 3
   verificationStatus: historical
   notes: 旧版数据，尚未核实
-updatedDate: 2026-10-0
+updatedDate: 2026-10-09
 ---
 
 ## 品牌简介与定位
