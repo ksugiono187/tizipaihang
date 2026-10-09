@@ -14,43 +14,30 @@ https.get(URL, (res) => {
   res.on('end', () => {
     console.log('✅ 网页数据拉取成功，开始解析...');
     
-    // 匹配 <article> 块来分割每个品牌
     const articleRegex = /<article[^>]*>([\s\S]*?)<\/article>/g;
     let match;
-    
     const extractedData = [];
     
     while ((match = articleRegex.exec(data)) !== null) {
       const articleHtml = match[1];
-      
       const nameMatch = articleHtml.match(/<h3[^>]*>([^<]+)<\/h3>/);
       const priceMatch = articleHtml.match(/<span[^>]*>起步价格<\/span><span[^>]*title="([^"]+)"[^>]*>/);
       const trafficMatch = articleHtml.match(/<span[^>]*>基础流量<\/span><span[^>]*>([^<]+)<\/span>/);
       
       if (nameMatch) {
         const name = nameMatch[1].trim();
-        const priceStr = priceMatch ? priceMatch[1] : null;
-        const trafficStr = trafficMatch ? trafficMatch[1] : null;
-        
-        let minPrice = '待核实';
-        if (priceStr) {
-          // 提取数字
-          const numMatch = priceStr.match(/\d+(\.\d+)?/);
-          if (numMatch) minPrice = numMatch[0];
-        }
+        const priceStr = priceMatch ? priceMatch[1] : '待核实';
+        const trafficStr = trafficMatch ? trafficMatch[1] : '待核实';
         
         extractedData.push({
           name: name,
           priceStr: priceStr,
-          minPrice: minPrice,
+          minPrice: priceStr, // Keep the full string like "¥8/月起" or "约 ¥7/月起" or just the number if we want
           trafficStr: trafficStr
         });
       }
     }
     
-    console.log(`🔍 成功从目标网站提取到 ${extractedData.length} 个品牌的数据`);
-    
-    // 遍历本地文件并更新
     const files = fs.readdirSync(BRANDS_DIR).filter(f => f.endsWith('.md'));
     let updateCount = 0;
     
@@ -58,34 +45,31 @@ https.get(URL, (res) => {
       const filePath = path.join(BRANDS_DIR, file);
       let content = fs.readFileSync(filePath, 'utf-8');
       
-      // 提取本文件的 name
       const nameMatch = content.match(/name:\s*['"]?([^'"\n]+)['"]?/);
       if (!nameMatch) return;
       const localName = nameMatch[1];
       
-      // 在提取的数据中寻找匹配项 (模糊匹配，例如 "微风网络 Breezenet" 和 "微风网络")
+      // 模糊匹配
       const matchedData = extractedData.find(d => localName.includes(d.name) || d.name.includes(localName));
       
       if (matchedData) {
-        // 更新 minPrice
-        if (matchedData.minPrice !== '待核实') {
-          content = content.replace(/(minPrice:\s*)\d+(\.\d+)?/, `$1${matchedData.minPrice}`);
-          
-          // 我们也可以更新 Markdown 正文里的流量和价格
-          content = content.replace(/套餐起步价格：.*?\n/, `套餐起步价格：**¥${matchedData.minPrice}/月起**\n`);
-          if (matchedData.trafficStr) {
-            content = content.replace(/基础流量：.*?\n/, `基础流量：**${matchedData.trafficStr}**\n`);
-          }
-          
-          // 记录最后核实时间
-          const today = new Date().toISOString().split('T')[0];
-          content = content.replace(/最后核实时间：.*?\n/, `最后核实时间：**${today}**\n`);
-          content = content.replace(/(updatedDate:\s*)['"]?[^'"\n]+['"]?/, `$1"${today}"`);
-          
-          fs.writeFileSync(filePath, content);
-          console.log(`✅ 已同步: ${localName} -> 价格: ${matchedData.minPrice}, 流量: ${matchedData.trafficStr}`);
-          updateCount++;
-        }
+        // 更新 frontmatter 中的 minPrice (处理可能是数字或 "待核实" 的情况)
+        content = content.replace(/minPrice:\s*["']?.*?["']?\n/, `minPrice: "${matchedData.minPrice}"\n`);
+        
+        // 更新 trafficInfo
+        content = content.replace(/trafficInfo:\s*["']?.*?["']?\n/, `trafficInfo: "${matchedData.trafficStr}"\n`);
+        
+        // 更新日期
+        const today = new Date().toISOString().split('T')[0];
+        content = content.replace(/updatedDate:\s*["']?.*?["']?\n/, `updatedDate: "${today}"\n`);
+        
+        // 正文中替换
+        content = content.replace(/\*数据待核实。请前往官网查看最新价格。\*/, `**起步套餐价格：** ${matchedData.minPrice}`);
+        content = content.replace(/\*数据待核实。\*/, `**基础套餐流量：** ${matchedData.trafficStr}`);
+
+        fs.writeFileSync(filePath, content);
+        console.log(`✅ 已同步: ${localName} -> 价格: ${matchedData.minPrice}, 流量: ${matchedData.trafficStr}`);
+        updateCount++;
       }
     });
     

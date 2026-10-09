@@ -9,10 +9,10 @@ features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
 pros: ["速度极快", "节点丰富", "稳定性佳"]
 cons: ["暂未发现明显缺点"]
 targetUsers: "适合需要稳定翻墙和高质量网络的用户"
-minPrice: "待核实"
+minPrice: "约 ¥8/月（年付折算）"
 minPriceValue: 15
 currency: "CNY"
-trafficInfo: "待核实"
+trafficInfo: "60GB/月"
 nodes: "香港、日本、新加坡、美国等"
 protocols: ["Shadowsocks", "V2Ray", "Trojan"]
 devices: 3
@@ -25,11 +25,11 @@ Firefly机场 是一家优质的翻墙机场，提供高速、稳定的网络加
 
 ## 套餐价格分析
 
-*数据待核实。请前往官网查看最新价格。*
+**起步套餐价格：** 约 ¥8/月（年付折算）
 
 ## 流量性价比
 
-*数据待核实。*
+**基础套餐流量：** 60GB/月
 
 ## 速度与稳定性
 

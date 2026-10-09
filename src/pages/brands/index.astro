@@ -46,7 +46,11 @@ const sortedBrands = brands.sort((a, b) => b.data.rating - a.data.rating);
           <div class="space-y-2 text-sm text-gray-300 mb-6">
             <div class="flex justify-between border-b border-white/5 pb-2">
               <span class="text-gray-500">最低价格</span>
-              <span>{brand.data.currency} {brand.data.minPrice}</span>
+              <span class="font-semibold text-white">{brand.data.minPrice}</span>
+            </div>
+            <div class="flex justify-between border-b border-white/5 pb-2">
+              <span class="text-gray-500">基础流量</span>
+              <span class="font-semibold text-white truncate max-w-[150px]">{brand.data.trafficInfo || '待核实'}</span>
             </div>
             <div class="flex justify-between border-b border-white/5 pb-2">
               <span class="text-gray-500">支持协议</span>
