@@ -26,7 +26,7 @@ const top10 = targetOrder.map((name, index) => {
     rank: index + 1,
     brand: brand
   };
-}).filter(item => item.brand !== undefined);
+}).filter((item): item is { rank: number, brand: any } => item.brand !== undefined);
 
 const itemListSchema = {
   "@context": "https://schema.org",
