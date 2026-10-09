@@ -17,14 +17,13 @@ heroImage: "../../assets/blog-placeholder-2.jpg"
 
 Shadowrocket 采用 iOS 系统底层的 Network Extension 框架，通过创建一个虚拟的 VPN 接口（TUN 接口）来接管设备的所有 TCP/UDP 流量。
 
-```mermaid
-flowchart TD
-    A[iOS App 发起请求] --> B(TUN 虚拟接口)
-    B --> C{Shadowrocket 规则引擎}
-    C -->|命中 PROXY| D[远端加密代理节点]
-    C -->|命中 DIRECT| E[本地运营商直连]
-    C -->|命中 REJECT| F[直接丢弃拦截]
-```
+
+> **流量转发路径示意**：
+> 1. iOS App 发起网络请求
+> 2. 请求被虚拟接口接管并送入规则引擎
+> 3. 引擎比对：命中 PROXY 则送往海外加密节点
+> 4. 引擎比对：命中 DIRECT 则直接由本地网络发起直连
+
 
 如上图所示，当你在进行 **Shadowrocket使用教程 (第1篇)：Shadowrocket下载深度解析与实战技巧** 相关的操作时，其核心本质就是配置这条流量分发路径。
 

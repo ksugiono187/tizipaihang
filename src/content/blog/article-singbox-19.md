@@ -87,20 +87,13 @@ EOF'
 
 ## 4. 网络底层架构图解
 
-```mermaid
-sequenceDiagram
-    participant U as 用户设备 (Sing-box)
-    participant F as 防火墙 (GFW)
-    participant S as 远端服务器 (Sing-box)
-    participant T as 目标网站 (Netflix/Google)
 
-    U->>F: 发起伪装 TLS Client Hello (uTLS)
-    F-->>U: 放行 (识别为正常 HTTPS 流量)
-    U->>S: 建立安全加密通道 (VLESS)
-    S->>T: 代理解析并转发请求
-    T-->>S: 返回数据
-    S-->>U: 通过加密通道传回
-```
+> **流量传输时序解析**：
+> 1. 用户设备发起伪装的 TLS 握手请求
+> 2. 防火墙 (GFW) 识别为常规 HTTPS 流量并予以放行
+> 3. 远端服务器接收并建立 VLESS 专属加密通道
+> 4. 请求被送达目标网站 (如 Netflix) 并原路返回加密数据
+
 
 从上图的交互逻辑可以看出，Sing-box 的 `uTLS` 功能在绕过深度包检测 (DPI) 时起到了决定性作用。
 
