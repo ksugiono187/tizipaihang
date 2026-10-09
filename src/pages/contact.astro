@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<Layout
+	title={`联系我们｜`}
+	description="与梯子排行团队取得联系，提交机场收录申请或反馈问题。"
+>
+  <div class="max-w-4xl mx-auto px-4 py-16">
+    <div class="glass-card p-8 md:p-12 rounded-2xl relative overflow-hidden text-center">
+      <h1 class="text-4xl font-bold mb-6 text-white">联系我们</h1>
+      
+      <p class="text-gray-300 text-lg mb-10 max-w-2xl mx-auto">
+        无论是寻求机场推荐帮助、反馈网站问题，还是希望提交您的品牌进行评测收录，我们都非常乐意倾听您的声音。
+      </p>
+      
+      <div class="inline-block bg-white/5 border border-white/10 rounded-2xl p-8 shadow-xl text-left min-w-[300px] md:min-w-[400px]">
+        <div class="mb-6">
+          <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">商务合作与机场收录</h3>
+          <p class="text-white text-lg font-mono mb-1">
+            <a href="mailto:admin@tizipaihang.wiki" class="text-primary hover:underline">admin@tizipaihang.wiki</a>
+          </p>
+          <p class="text-xs text-gray-500 mt-2">* 提交收录前，请确保您的机场已稳定运营超过 6 个月。</p>
+        </div>
+
+        <div class="border-t border-white/10 pt-6">
+          <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">用户反馈与报错</h3>
+          <p class="text-white text-lg font-mono">
+            <a href="mailto:support@tizipaihang.wiki" class="text-primary hover:underline">support@tizipaihang.wiki</a>
+          </p>
+        </div>
+      </div>
+      
+      <div class="mt-12 text-sm text-gray-500 max-w-xl mx-auto">
+        <p>我们通常会在 24-48 小时内回复所有邮件。感谢您对 {SITE_TITLE} 的信任与支持！</p>
+      </div>
+    </div>
+  </div>
+</Layout>

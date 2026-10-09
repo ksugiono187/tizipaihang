@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<Layout
+	title={`测评方法｜`}
+	description="梯子排行 (tizipaihang.wiki) 的测评方法、数据来源及排行榜产生机制。"
+>
+  <div class="max-w-4xl mx-auto px-4 py-16">
+    <div class="glass-card p-8 md:p-12 rounded-2xl relative overflow-hidden">
+      <h1 class="text-3xl font-bold mb-8 text-white">测评方法与数据声明</h1>
+      
+      <div class="prose prose-invert prose-lg max-w-none space-y-6">
+        <p>为了保证测评的客观性与透明度，{SITE_TITLE} 遵循以下严格的测评标准：</p>
+        
+        <h2 class="text-2xl font-bold text-white mt-8">1. 价格如何核实</h2>
+        <p>我们每月定期登录各机场官网，获取最新的套餐列表。提取“最低起步套餐”和“主推基础套餐”作为对比基准，并剔除可能存在的隐性收费（如：初装费、高昂的手续费等）。我们会在页面标明数据的**最后核实日期**。</p>
+        
+        <h2 class="text-2xl font-bold text-white mt-8">2. 速度如何测试</h2>
+        <p>测速环境统一为：<strong>中国电信 1000M 家宽 / 中国联通 500M 5G 网络</strong>。测速工具使用 Speedtest CLI 及开源探针程序。测速结果提取极值、中位数，而非单纯的峰值，以反映真实的用户体验。暂未进行独立实测的机场，我们会在数据中明确标注“旧版数据，尚未核实”。</p>
+        
+        <h2 class="text-2xl font-bold text-white mt-8">3. 稳定性如何测试</h2>
+        <p>我们会在工作日和周末的**晚高峰时段（20:00 - 23:00）**，通过自动化脚本持续监控目标节点的丢包率（Packet Loss）与延迟（Ping）。只有在晚高峰持续保持低丢包率的节点，才会被我们在稳定性评估中给予高分。</p>
+        
+        <h2 class="text-2xl font-bold text-white mt-8">4. 排行榜如何产生</h2>
+        <p>我们的 <strong>Top 10 机场推荐</strong> 榜单是由站长依据各机场的综合实力（速度、稳定性、性价比、工单响应速度）经过人工编辑和排序产生的推荐名单。而诸如“便宜机场”、“游戏机场”等垂直领域榜单，则是严格按照其实际核实的指标数据（如：按月均价格从低到高排列）生成的绝对客观排序。</p>
+
+        <h2 class="text-2xl font-bold text-white mt-8">5. 未验证数据如何处理</h2>
+        <p>对于一些刚收录或旧版本遗留的数据，如果缺少近期的实测日志支撑，我们会在前端和 Schema 结构化数据中强制移除伪造的评分基数（如100条评价），并将这些数据标注为“历史参考资料”或“尚未实测”。</p>
+      </div>
+    </div>
+  </div>
+</Layout>

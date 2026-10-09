@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<Layout
+	title={`推广披露 (Disclosure)｜`}
+	description="关于梯子排行网站联盟推广链接和盈利模式的透明度声明。"
+>
+  <div class="max-w-4xl mx-auto px-4 py-16">
+    <div class="glass-card p-8 md:p-12 rounded-2xl relative overflow-hidden">
+      <h1 class="text-3xl font-bold mb-8 text-white">推广与利益披露声明</h1>
+      
+      <div class="prose prose-invert prose-lg max-w-none space-y-6">
+        <p>透明度是 {SITE_TITLE} 最核心的价值观之一。为了让您在阅读我们的评测和推荐时能够做出明智的决策，我们在此全面公开本站的运营与盈利模式。</p>
+        
+        <h2 class="text-2xl font-bold text-white mt-8">联盟推广链接 (Affiliate Links)</h2>
+        <p>本站（{SITE_TITLE}）页面中指向外部服务商（机场/梯子品牌）的链接，绝大多数包含**联盟推广参数（Affiliate Links）**。这意味着：</p>
+        <ul>
+          <li>如果您通过点击这些链接进入服务商网站并完成购买，我们可能会从中获得一定比例的推荐佣金。</li>
+          <li>**这对您没有任何额外成本。** 您购买套餐的价格与直接访问官网购买的价格完全一致，甚至因为我们提供的专属优惠码，您的最终价格会更低。</li>
+          <li>这些佣金收入是支撑本站持续运营、购买测试套餐、维持全球测速节点和服务器运转的唯一资金来源。</li>
+        </ul>
+        
+        <h2 class="text-2xl font-bold text-white mt-8">利益是否会影响评测客观性？</h2>
+        <p><strong>绝对不会。</strong></p>
+        <p>我们承诺：</p>
+        <ul>
+          <li>我们绝不接受任何服务商的“花钱买排名”、“付费修改评测数据”或“隐藏负面评价”的公关要求。</li>
+          <li>所有收录的品牌，无论佣金比例高低，都必须经过统一的性能和稳定性测试。一旦在长期监控中发现某个品牌出现“跑路预警”、“频繁断线”或“超售严重”等损害用户体验的行为，我们会立即降级其排名甚至直接将其从推荐名单中移除。</li>
+          <li>我们对所有的优缺点都会如实列出。</li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-white mt-8">如何识别推广链接？</h2>
+        <p>本站的所有外部推广链接，在代码层面都严格添加了 <code>rel="sponsored nofollow noopener noreferrer"</code> 标签。这符合搜索引擎规范，明确标识了其商业推荐属性。</p>
+
+        <p class="mt-8 text-sm text-gray-400">如果您对我们的盈利模式或任何评测内容有疑问，欢迎随时通过联系页面与我们沟通。</p>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -24,7 +24,7 @@ const brands = await getCollection('brands');
 const topBrands = [...brands].sort((a, b) => b.data.rating?.value - a.data.rating?.value).slice(0, 10);
 ---
 
-<Layout title={`${name} Top 10 排行榜（2026） - ${SITE_TITLE}`} description={`2026年最新${name}推荐排行，${desc} 详细对比各家优缺点。`}>
+<Layout title={`${name} Top 10 排行榜（2026）｜`} description={`2026年最新${name}推荐排行，${desc} 详细对比各家优缺点。`}>
   <div class="max-w-5xl mx-auto px-4 py-12">
     <div class="text-center mb-16">
       <h1 class="text-4xl md:text-5xl font-extrabold mb-6">
