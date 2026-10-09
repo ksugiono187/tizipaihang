@@ -1,0 +1,97 @@
+---
+// PingTester.astro
+// 提供一个交互式的网络质量测速仪小工具
+---
+
+<div class="glass-card p-6 md:p-8 rounded-2xl relative overflow-hidden group">
+  <div class="absolute -right-10 -top-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl group-hover:bg-secondary/20 transition-all duration-500"></div>
+  
+  <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex-grow">
+      <h3 class="text-2xl font-bold text-white mb-2 flex items-center">
+        <svg class="w-6 h-6 mr-2 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        全网节点实时测速仪
+      </h3>
+      <p class="text-gray-400 text-sm">测试您当前网络或梯子节点访问国际主流网站的真实延迟响应时间（单位：毫秒）。</p>
+    </div>
+    
+    <button id="start-ping-btn" class="flex-shrink-0 px-6 py-3 bg-secondary/20 hover:bg-secondary text-secondary hover:text-white font-bold rounded-xl transition-all border border-secondary/30 shadow-[0_0_15px_rgba(34,197,94,0.2)]">
+      开始测速
+    </button>
+  </div>
+
+  <div id="ping-results" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 hidden">
+    <div class="bg-white/5 rounded-lg p-4 text-center">
+      <div class="text-sm text-gray-400 mb-1">Google</div>
+      <div id="ping-google" class="text-2xl font-bold text-white">--</div>
+    </div>
+    <div class="bg-white/5 rounded-lg p-4 text-center">
+      <div class="text-sm text-gray-400 mb-1">YouTube</div>
+      <div id="ping-youtube" class="text-2xl font-bold text-white">--</div>
+    </div>
+    <div class="bg-white/5 rounded-lg p-4 text-center">
+      <div class="text-sm text-gray-400 mb-1">GitHub</div>
+      <div id="ping-github" class="text-2xl font-bold text-white">--</div>
+    </div>
+    <div class="bg-white/5 rounded-lg p-4 text-center">
+      <div class="text-sm text-gray-400 mb-1">Cloudflare</div>
+      <div id="ping-cf" class="text-2xl font-bold text-white">--</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('start-ping-btn');
+    const results = document.getElementById('ping-results');
+    
+    if (!btn || !results) return;
+
+    const targets = [
+      { id: 'ping-google', url: 'https://www.google.com/favicon.ico' },
+      { id: 'ping-youtube', url: 'https://www.youtube.com/favicon.ico' },
+      { id: 'ping-github', url: 'https://github.com/favicon.ico' },
+      { id: 'ping-cf', url: 'https://www.cloudflare.com/favicon.ico' }
+    ];
+
+    async function pingUrl(url) {
+      const start = performance.now();
+      try {
+        await fetch(url, { mode: 'no-cors', cache: 'no-store' });
+        const end = performance.now();
+        return Math.floor(end - start);
+      } catch (e) {
+        return 'Timeout';
+      }
+    }
+
+    btn.addEventListener('click', async () => {
+      btn.textContent = '测速中...';
+      btn.disabled = true;
+      btn.classList.add('opacity-50', 'cursor-not-allowed');
+      results.classList.remove('hidden');
+
+      for (const target of targets) {
+        const el = document.getElementById(target.id);
+        if (el) el.innerHTML = '<span class="animate-pulse">测速中</span>';
+      }
+
+      for (const target of targets) {
+        const ms = await pingUrl(target.url);
+        const el = document.getElementById(target.id);
+        if (el) {
+          if (ms === 'Timeout') {
+            el.innerHTML = '<span class="text-red-400">超时</span>';
+          } else {
+            const color = ms < 100 ? 'text-green-400' : ms < 300 ? 'text-yellow-400' : 'text-red-400';
+            el.innerHTML = `<span class="${color}">${ms} <span class="text-xs text-gray-500">ms</span></span>`;
+          }
+        }
+      }
+
+      btn.textContent = '重新测速';
+      btn.disabled = false;
+      btn.classList.remove('opacity-50', 'cursor-not-allowed');
+    });
+  });
+</script>

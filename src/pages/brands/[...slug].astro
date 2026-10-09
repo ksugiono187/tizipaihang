@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import Giscus from '../../components/Giscus.astro';
 
 export async function getStaticPaths() {
   const brands = await getCollection('brands');
@@ -119,12 +120,19 @@ const productSchema = {
     </div>
 
     <!-- 正文内容 (Markdown渲染) -->
-    <article class="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-primary hover:prose-a:text-primary-dark prose-strong:text-white">
+    <article class="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-primary hover:prose-a:text-primary-dark prose-strong:text-white mb-12">
       <Content />
     </article>
     
-    <div class="mt-12 p-6 glass-card border-l-4 border-l-yellow-500 text-sm text-gray-400">
+    <div class="mt-12 p-6 glass-card border-l-4 border-l-yellow-500 text-sm text-gray-400 mb-12">
       <strong>免责声明：</strong> 本站提供的信息仅供参考。我们努力保持信息的准确性，但套餐价格和政策可能随时变动，请以官网最新信息为准。
+    </div>
+
+    <!-- 评论区 -->
+    <div class="glass-card p-8 rounded-2xl mb-12">
+      <h3 class="text-2xl font-bold mb-6 text-white border-b border-white/10 pb-4">用户真实评价</h3>
+      <p class="text-sm text-gray-400 mb-6">您正在使用 {data.name} 吗？欢迎在下方分享您的真实使用体验、测速数据或遇到的问题。</p>
+      <Giscus />
     </div>
   </div>
 </Layout>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PingTester from '../components/PingTester.astro';
 
 // 模拟数据用于占位
 const top10 = [
@@ -31,6 +32,11 @@ const top10 = [
         </a>
       </div>
     </div>
+  </section>
+
+  <!-- Interactive Widget -->
+  <section class="max-w-7xl mx-auto px-4 -mt-16 mb-20 relative z-20">
+    <PingTester />
   </section>
 
   <!-- 核心优势介绍 -->
