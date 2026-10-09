@@ -16,44 +16,10 @@ heroImage: "../../assets/blog-placeholder-4.jpg"
 
 Sing-box 的一切操作都基于一个强大的 `config.json` 文件。无论你是部署在服务器端还是客户端，理解其配置文件的结构是解决 **sing-box与V2Ray教程 (第13篇)：sing-box配置深度解析与实战技巧** 的关键。
 
-```json
-{
-  "log": {
-    "level": "info",
-    "timestamp": true
-  },
-  "inbounds": [
-    {
-      "type": "tun",
-      "tag": "tun-in",
-      "inet4_address": "172.19.0.1/30",
-      "auto_route": true,
-      "strict_route": true
-    }
-  ],
-  "outbounds": [
-    {
-      "type": "vless",
-      "tag": "proxy",
-      "server": "server.example.com",
-      "server_port": 443,
-      "uuid": "your-uuid-here",
-      "tls": {
-        "enabled": true,
-        "server_name": "server.example.com",
-        "utls": { "enabled": true, "fingerprint": "chrome" }
-      }
-    }
-  ],
-  "route": {
-    "rules": [
-      { "geosite": "cn", "outbound": "direct" },
-      { "geoip": "cn", "outbound": "direct" }
-    ],
-    "auto_detect_interface": true
-  }
-}
-```
+
+> **配置摘要说明**：
+> 在此处，您需要配置好入站(inbounds)代理模式，并将您的订阅节点信息填入出站(outbounds)列表，同时配置好 GeoIP 规则以确保国内流量直连，不消耗代理流量。
+
 
 **配置模块剖析：**
 1. **Inbounds (入口)**：上面使用了 `tun` 模式，这是实现全局透明代理的最优解，接管所有 3 层网络流量。
@@ -66,21 +32,12 @@ Sing-box 的一切操作都基于一个强大的 `config.json` 文件。无论�
 
 ### 阶段一：内核安装与守护进程管理
 对于 Linux 服务器，强烈建议使用 `systemd` 来托管 Sing-box 进程，确保崩溃后自动重启：
-```bash
-sudo bash -c 'cat > /etc/systemd/system/sing-box.service <<EOF
-[Unit]
-Description=sing-box service
-After=network.target
 
-[Service]
-ExecStart=/usr/local/bin/sing-box run -c /etc/sing-box/config.json
-Restart=on-failure
-User=root
+* **步骤1**：登录服务器终端
+* **步骤2**：将默认的队列管理算法修改为 fq
+* **步骤3**：将 TCP 拥塞控制算法指定为 bbr
+* **步骤4**：应用生效，即可显著降低网络丢包率
 
-[Install]
-WantedBy=multi-user.target
-EOF'
-```
 
 ### 阶段二：客户端 TUN 模式的系统级调优
 在 Windows 平台上运行 Sing-box TUN 模式时，经常会遇到路由表冲突。你需要确保是以“管理员身份”运行，并关闭系统自带的“网络共享中心”里的冗余适配器。

@@ -30,12 +30,12 @@ heroImage: "../../assets/blog-placeholder-1.jpg"
 
 ### 3.1 拥塞控制算法优化 (BBR)
 如果你使用的是自建节点或 VPS，开启 Linux 内核原生的 BBR (Bottleneck Bandwidth and Round-trip propagation time) 算法是必选项。它能显著提升高延迟、高丢包环境下的吞吐量。
-```bash
-# 开启 BBR 的核心命令
-echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
-sysctl -p
-```
+
+* **步骤1**：登录服务器终端
+* **步骤2**：将默认的队列管理算法修改为 fq
+* **步骤3**：将 TCP 拥塞控制算法指定为 bbr
+* **步骤4**：应用生效，即可显著降低网络丢包率
+
 
 ### 3.2 DNS 防泄漏与智能解析 (DNS Leak Protection)
 默认的系统 DNS 会将您的访问意图暴露给本地运营商。高级玩家必须在代理软件中配置 `DoH` (DNS over HTTPS) 或 `DoT`。

@@ -40,15 +40,10 @@ Shadowrocket 采用 iOS 系统底层的 Network Extension 框架，通过创建�
 ### 步骤二：配置智能分流规则 (Rule-based Routing)
 为了避免国内网站绕道海外导致速度变慢，我们必须配置 GeoIP 和域名的白名单：
 
-```ini
-# 典型的高级分流规则示例
-[Rule]
-DOMAIN-SUFFIX,google.com,PROXY
-DOMAIN-SUFFIX,netflix.com,PROXY
-DOMAIN-KEYWORD,bilibili,DIRECT
-GEOIP,CN,DIRECT
-FINAL,PROXY
-```
+
+> **配置摘要说明**：
+> 在此处，您需要配置好入站(inbounds)代理模式，并将您的订阅节点信息填入出站(outbounds)列表，同时配置好 GeoIP 规则以确保国内流量直连，不消耗代理流量。
+
 
 ### 步骤三：UDP 转发与 DNS 防泄漏配置
 为了在玩外服游戏或进行跨国语音通话时不发生丢包，建议开启 `UDP 转发` 功能。
