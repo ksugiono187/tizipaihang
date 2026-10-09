@@ -4,21 +4,21 @@ link: https://vip02.fireflyaff.com/#/?code=Fes6j9rn
 couponCode: firefly
 couponDesc: 专享折扣
 tags:
-  - 稳定
-  - 高速
+  - 便宜
   - 高性价比
+  - 月付
 features:
-  - 支持流媒体解锁
-  - 晚高峰秒开
-  - 全平台支持
+  - 价格亲民
+  - 适合备用
+  - 基础解锁
 pros:
-  - 原生节点解锁流媒体
-  - 晚高峰无明显降速
-  - 支持全平台客户端
+  - 价格非常便宜
+  - 套餐选择多
+  - 适合轻度用户
 cons:
-  - 不提供免费试用
-  - 专用客户端UI较为简陋
-targetUsers: 适合需要稳定翻墙和高质量网络的用户
+  - 晚高峰偶尔有波动
+  - 无专线节点
+targetUsers: 适合学生党和预算有限的用户
 minPrice:
   value: 约 ¥8/月（年付折算）
   verificationStatus: historical

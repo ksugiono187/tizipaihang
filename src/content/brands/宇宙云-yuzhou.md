@@ -4,21 +4,20 @@ link: https://wzjc.yuzoucloud.cc/#/?code=wL7YStBa
 couponCode: YUZHOU553
 couponDesc: 专享折扣
 tags:
-  - 稳定
-  - 高速
-  - 高性价比
+  - 新手友好
+  - 一键傻瓜式
 features:
-  - 支持流媒体解锁
-  - 晚高峰秒开
-  - 全平台支持
+  - 提供全平台客户端
+  - 人工客服解答
+  - 注册即用
 pros:
-  - IPLC专线延迟极低
-  - 不限制设备数量
-  - 客服响应速度快
+  - 上手门槛极低
+  - 专属客户端好用
+  - 售后耐心
 cons:
-  - 节点更换频率较低
-  - 高峰期需手动切换更优节点
-targetUsers: 适合需要稳定翻墙和高质量网络的用户
+  - 高阶功能较少
+  - 不支持自定义路由规则
+targetUsers: 适合完全没有折腾经验的新手小白
 minPrice:
   value: ¥14.9/月起
   verificationStatus: historical

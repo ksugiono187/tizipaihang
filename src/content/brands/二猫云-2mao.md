@@ -2,21 +2,20 @@
 name: 二猫云 2mao
 link: https://waaa.2maoyunaff.cc/#/?code=uHeyKG44
 tags:
-  - 稳定
-  - 高速
-  - 高性价比
+  - 大流量
+  - 不限速
 features:
-  - 支持流媒体解锁
-  - 晚高峰秒开
-  - 全平台支持
+  - 团队共享友好
+  - 超大带宽冗余
+  - 不限设备数
 pros:
-  - 适合新手一键使用
-  - 提供专用傻瓜式客户端
-  - 流媒体解锁稳定
+  - 流量给的特别足
+  - 适合重度下载用户
+  - 支持多设备在线
 cons:
-  - 仅支持主流协议(V2Ray/Trojan)
-  - 缺乏冷门小众国家
-targetUsers: 适合需要稳定翻墙和高质量网络的用户
+  - 不保证所有节点都能看Netflix
+  - 偶尔会被封IP
+targetUsers: 适合下载狂魔和团队共享
 minPrice:
   value: 约 ¥15/月起
   verificationStatus: historical

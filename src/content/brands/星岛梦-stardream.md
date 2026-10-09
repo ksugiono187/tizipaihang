@@ -4,21 +4,21 @@ link: https://kfccbb.xingdaomeng.com/#/?code=JTRIWFim
 couponCode: nmw888
 couponDesc: 专享折扣
 tags:
-  - 稳定
-  - 高速
-  - 高性价比
+  - 流媒体
+  - 原生IP
+  - 大流量
 features:
-  - 支持流媒体解锁
-  - 晚高峰秒开
-  - 全平台支持
+  - 全解锁Netflix/Disney+
+  - 支持ChatGPT
+  - 4K流畅
 pros:
-  - 老牌大厂信誉好
-  - 多条冷门国家节点
-  - 高峰期丢包率低于1%
+  - 解锁能力极强
+  - 冷门地区节点多
+  - 测速优秀
 cons:
-  - 偶有支付网关维护
-  - 暂不提供自定义路由策略
-targetUsers: 适合需要稳定翻墙和高质量网络的用户
+  - 部分原生节点禁止BT下载
+  - 只支持常用协议
+targetUsers: 适合重度追剧与Netflix发烧友
 minPrice:
   value: ¥16/月起
   verificationStatus: historical

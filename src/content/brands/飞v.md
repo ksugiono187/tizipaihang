@@ -2,21 +2,21 @@
 name: 飞V
 link: https://varnexa.flyvaff.com/#/?code=UoU2Izm5
 tags:
-  - 稳定
-  - 高速
+  - 便宜
   - 高性价比
+  - 月付
 features:
-  - 支持流媒体解锁
-  - 晚高峰秒开
-  - 全平台支持
+  - 价格亲民
+  - 适合备用
+  - 基础解锁
 pros:
-  - 主打极速纯专线
-  - 香港/日本节点极其稳定
-  - 无流媒体审计限制
+  - 价格非常便宜
+  - 套餐选择多
+  - 适合轻度用户
 cons:
-  - 最低套餐门槛较高
-  - 不支持退款
-targetUsers: 适合需要稳定翻墙和高质量网络的用户
+  - 晚高峰偶尔有波动
+  - 无专线节点
+targetUsers: 适合学生党和预算有限的用户
 minPrice:
   value: ¥4.9/月起
   verificationStatus: historical

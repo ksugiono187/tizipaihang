@@ -4,21 +4,20 @@ link: https://vip02.flashleapaff.com/#/?code=FkCGEeaC
 couponCode: shanyue
 couponDesc: 专享折扣
 tags:
-  - 稳定
-  - 高速
-  - 高性价比
+  - 大流量
+  - 不限速
 features:
-  - 支持流媒体解锁
-  - 晚高峰秒开
-  - 全平台支持
+  - 团队共享友好
+  - 超大带宽冗余
+  - 不限设备数
 pros:
-  - 老牌大厂信誉好
-  - 多条冷门国家节点
-  - 高峰期丢包率低于1%
+  - 流量给的特别足
+  - 适合重度下载用户
+  - 支持多设备在线
 cons:
-  - 偶有支付网关维护
-  - 暂不提供自定义路由策略
-targetUsers: 适合需要稳定翻墙和高质量网络的用户
+  - 不保证所有节点都能看Netflix
+  - 偶尔会被封IP
+targetUsers: 适合下载狂魔和团队共享
 minPrice:
   value: ¥24/月起
   verificationStatus: historical

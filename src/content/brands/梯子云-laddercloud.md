@@ -2,21 +2,21 @@
 name: 梯子云 LadderCloud
 link: https://varnexa.ladderaff.com/#/?code=kuE4kqxo
 tags:
+  - 专线
   - 稳定
   - 高速
-  - 高性价比
 features:
-  - 支持流媒体解锁
+  - IPLC专线
+  - 游戏低延迟
   - 晚高峰秒开
-  - 全平台支持
 pros:
-  - 非常适合游戏加速
-  - UDP转发良好
-  - 全中转高速通道
+  - 网络极度稳定
+  - 游戏几乎不丢包
+  - 流媒体全解锁
 cons:
-  - 晚高峰偶尔有轻微波动
-  - 部分冷门节点较少
-targetUsers: 适合需要稳定翻墙和高质量网络的用户
+  - 价格相对较高
+  - 套餐流量较少
+targetUsers: 适合外贸办公与硬核游戏玩家
 minPrice:
   value: ¥25/月起
   verificationStatus: historical

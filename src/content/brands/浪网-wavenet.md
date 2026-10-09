@@ -2,21 +2,21 @@
 name: 浪网 WaveNet
 link: https://varnexa.wavenetaff.com/#/?code=oU77JXen
 tags:
+  - 专线
   - 稳定
   - 高速
-  - 高性价比
 features:
-  - 支持流媒体解锁
+  - IPLC专线
+  - 游戏低延迟
   - 晚高峰秒开
-  - 全平台支持
 pros:
-  - 高规格服务器硬件
-  - 带宽充裕不超售
-  - 提供完善的文档教程
+  - 网络极度稳定
+  - 游戏几乎不丢包
+  - 流媒体全解锁
 cons:
-  - 月付价格略贵
-  - 仅支持年付/半年付
-targetUsers: 适合需要稳定翻墙和高质量网络的用户
+  - 价格相对较高
+  - 套餐流量较少
+targetUsers: 适合外贸办公与硬核游戏玩家
 minPrice:
   value: ¥30/月起
   verificationStatus: historical

@@ -4,21 +4,21 @@ link: https://edp01.breezenetaff.com/#/?code=4KDOroY0
 couponCode: weifeng90
 couponDesc: 专享折扣
 tags:
-  - 稳定
-  - 高速
+  - 便宜
   - 高性价比
+  - 月付
 features:
-  - 支持流媒体解锁
-  - 晚高峰秒开
-  - 全平台支持
+  - 价格亲民
+  - 适合备用
+  - 基础解锁
 pros:
-  - 提供大流量套餐
-  - BGP中转入口优秀
-  - 支持企业级定制
+  - 价格非常便宜
+  - 套餐选择多
+  - 适合轻度用户
 cons:
-  - 不支持BT下载
-  - 退款政策较为苛刻
-targetUsers: 适合需要稳定翻墙和高质量网络的用户
+  - 晚高峰偶尔有波动
+  - 无专线节点
+targetUsers: 适合学生党和预算有限的用户
 minPrice:
   value: ¥8/月起
   verificationStatus: historical

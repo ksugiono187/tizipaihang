@@ -2,21 +2,21 @@
 name: 快狸 KuaiLi
 link: https://work.kuailicloud.cc/#/?code=gVGJa0Mp
 tags:
-  - 稳定
-  - 高速
+  - 便宜
   - 高性价比
+  - 月付
 features:
-  - 支持流媒体解锁
-  - 晚高峰秒开
-  - 全平台支持
+  - 价格亲民
+  - 适合备用
+  - 基础解锁
 pros:
-  - 性价比极高
-  - 套餐选择灵活
-  - 支持支付宝/微信支付
+  - 价格非常便宜
+  - 套餐选择多
+  - 适合轻度用户
 cons:
-  - 测速受限于本地网络环境
-  - 不提供直连节点
-targetUsers: 适合需要稳定翻墙和高质量网络的用户
+  - 晚高峰偶尔有波动
+  - 无专线节点
+targetUsers: 适合学生党和预算有限的用户
 minPrice:
   value: ¥10/月起（年付折算）
   verificationStatus: historical
