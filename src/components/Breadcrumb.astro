@@ -1,0 +1,40 @@
+---
+export interface BreadcrumbItem {
+  label: string;
+  url?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.label,
+    "item": item.url ? `https://fanqiangtizi.wiki${item.url}` : undefined
+  }))
+};
+---
+
+<nav aria-label="breadcrumb" class="mb-6">
+  <ol class="flex items-center space-x-2 text-sm text-gray-400">
+    {items.map((item, index) => (
+      <li class="flex items-center">
+        {index > 0 && <svg class="w-4 h-4 mx-2 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>}
+        {item.url && index !== items.length - 1 ? (
+          <a href={item.url} class="hover:text-primary transition-colors">{item.label}</a>
+        ) : (
+          <span class="text-gray-300" aria-current="page">{item.label}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />

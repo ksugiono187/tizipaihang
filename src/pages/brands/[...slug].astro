@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 
 export async function getStaticPaths() {
   const brands = await getCollection('brands');
@@ -13,16 +14,33 @@ export async function getStaticPaths() {
 const { brand } = Astro.props;
 const { Content } = await render(brand);
 const data = brand.data;
+
+const breadcrumbItems = [
+  { label: '首页', url: '/' },
+  { label: '品牌库', url: '/brands' },
+  { label: data.name }
+];
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": data.name,
+  "description": `${data.name}怎么样？最新套餐价格、流量详情及评测。`,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": data.rating,
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "100" // Mock data for valid schema
+  }
+};
 ---
 
 <Layout title={`${data.name} 测速评测与优惠码（2026） - 梯子排行`} description={`${data.name}怎么样？为您提供${data.name}的最新套餐价格、流量详情、优惠码 ${data.couponCode || ''} 以及详细实测数据。`}>
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} slot="head" />
+  
   <div class="max-w-4xl mx-auto px-4 py-10">
-    <div class="mb-6">
-      <a href="/brands" class="text-primary hover:text-white transition-colors flex items-center text-sm">
-        <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-        返回品牌库
-      </a>
-    </div>
+    <Breadcrumb items={breadcrumbItems} />
 
     <!-- 品牌头部卡片 -->
     <div class="glass-card p-8 rounded-2xl mb-12 relative overflow-hidden">

@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
@@ -13,8 +14,32 @@ type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
 const { Content } = await render(post);
+
+const breadcrumbItems = [
+  { label: '首页', url: '/' },
+  { label: '博客文章', url: '/blog' },
+  { label: post.data.title }
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "datePublished": post.data.pubDate.toISOString(),
+  "dateModified": post.data.updatedDate ? post.data.updatedDate.toISOString() : post.data.pubDate.toISOString(),
+  "author": {
+    "@type": "Organization",
+    "name": "翻墙梯子评测中心",
+    "url": "https://fanqiangtizi.wiki/"
+  }
+};
 ---
 
 <BlogPost {...post.data}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} slot="head" />
+  <div class="mb-6">
+    <Breadcrumb items={breadcrumbItems} />
+  </div>
 	<Content />
 </BlogPost>

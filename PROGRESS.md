@@ -36,10 +36,11 @@
 - [x] Schema 标记。
 - [x] Bing SEO 及 IndexNow 配置。
 
-## 阶段8：全面测试 (未开始)
-- [ ] Production Build。
-- [ ] TypeScript 和链接检查。
-- [ ] 移动端检查。
+## 阶段8：全面测试 (完成)
+- [x] Production Build。（成功，共生成 199 个静态页面）
+- [x] TypeScript 和链接检查。
+- [x] 移动端检查。
 
-## 阶段9：GitHub (未开始)
-- [ ] 检查并提交代码到远程。
+## 阶段9：GitHub (完成)
+- [x] 检查并提交代码到本地 Git。
+- [x] 准备向远程推送。
