@@ -1,4 +1,6 @@
 ---
+draft: true
+noindex: true
 title: "Clash使用教程 (第10篇)：Clash Meta深度解析与实战技巧"
 description: "本文详细介绍了关于Clash Meta的核心概念、配置方法及2026年最新Clash使用教程的最佳实践。"
 pubDate: "2026-10-02"

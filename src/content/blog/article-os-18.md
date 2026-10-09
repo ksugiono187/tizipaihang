@@ -1,4 +1,6 @@
 ---
+draft: true
+noindex: true
 title: "全平台客户端设置指南 (第18篇)：iOS翻墙深度解析与实战技巧"
 description: "本文详细介绍了关于iOS翻墙的核心概念、配置方法及2026年最新全平台客户端设置指南的最佳实践。"
 pubDate: "2026-10-01"

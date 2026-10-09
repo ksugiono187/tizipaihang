@@ -1,4 +1,6 @@
 ---
+draft: true
+noindex: true
 title: "sing-box与V2Ray教程 (第1篇)：sing-box配置深度解析与实战技巧"
 description: "本文详细介绍了关于sing-box配置的核心概念、配置方法及2026年最新sing-box与V2Ray教程的最佳实践。"
 pubDate: "2026-10-02"

@@ -1,4 +1,6 @@
 ---
+draft: true
+noindex: true
 title: "速度与稳定性问题排查 (第15篇)：DNS污染深度解析与实战技巧"
 description: "本文详细介绍了关于DNS污染的核心概念、配置方法及2026年最新速度与稳定性问题排查的最佳实践。"
 pubDate: "2026-10-07"

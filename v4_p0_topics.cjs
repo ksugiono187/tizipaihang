@@ -1,4 +1,7 @@
----
+const fs = require('fs');
+const path = require('path');
+
+const content = `---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { SITE_TITLE } from '../../consts';
@@ -24,8 +27,7 @@ const brands = await getCollection('brands');
 const topBrands = [...brands].slice(0, 5); // Just show a few as pending
 ---
 
-<Layout title={`${name} 排行榜（2026）｜梯子排行`} description={`2026年最新${name}推荐。${desc} 详细对比各家优缺点。
-`}>
+<Layout title={\`\${name} 排行榜（2026）｜梯子排行\`} description={\`2026年最新\${name}推荐。\${desc} 详细对比各家优缺点。\n\`}>
   <div class="max-w-5xl mx-auto px-4 py-12">
     <div class="text-center mb-16">
       <h1 class="text-4xl md:text-5xl font-extrabold mb-6">
@@ -46,7 +48,7 @@ const topBrands = [...brands].slice(0, 5); // Just show a few as pending
           <div class="flex-1">
             <h2 class="text-2xl font-bold text-white mb-2">{brand.data.name}</h2>
             <p class="text-gray-400 text-sm mb-4">
-              标称最低价格: {brand.data.minPriceValue ? `约 ¥${brand.data.minPriceValue}` : '待核实'} (未经核实)
+              标称最低价格: {brand.data.minPriceValue ? \`约 ¥\${brand.data.minPriceValue}\` : '待核实'} (未经核实)
             </p>
             <div class="flex flex-wrap gap-2 mb-4">
                {brand.data.tags?.map((tag: string) => (
@@ -55,7 +57,7 @@ const topBrands = [...brands].slice(0, 5); // Just show a few as pending
             </div>
           </div>
           <div class="w-full md:w-auto flex flex-col gap-3 shrink-0">
-             <a href={`/brands/${brand.id}`} class="px-6 py-2 glass-card hover:bg-white/10 text-white font-medium rounded-lg text-center transition-colors">
+             <a href={\`/brands/\${brand.id}\`} class="px-6 py-2 glass-card hover:bg-white/10 text-white font-medium rounded-lg text-center transition-colors">
                查看核实进度
              </a>
              {brand.data.link && (
@@ -69,3 +71,7 @@ const topBrands = [...brands].slice(0, 5); // Just show a few as pending
     </div>
   </div>
 </Layout>
+`;
+
+fs.writeFileSync(path.join(__dirname, 'src/pages/topics/[topic].astro'), content);
+console.log('✅ P0-2: Fixed topics sorting and ranking logic.');

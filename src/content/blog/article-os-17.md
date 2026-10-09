@@ -1,4 +1,6 @@
 ---
+draft: true
+noindex: true
 title: "全平台客户端设置指南 (第17篇)：Mac机场深度解析与实战技巧"
 description: "本文详细介绍了关于Mac机场的核心概念、配置方法及2026年最新全平台客户端设置指南的最佳实践。"
 pubDate: "2026-10-09"
