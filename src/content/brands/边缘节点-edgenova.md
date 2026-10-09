@@ -1,22 +1,53 @@
 ---
-name: "边缘节点 EdgeNova"
-link: "https://work.edgenovaaff.cc/#/?code=z81zCfw1"
-
-rating: 4.51
-peakSpeed: "99.1%"
-tags: ["稳定", "高速", "高性价比"]
-features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["性价比极高","套餐选择灵活","支持支付宝/微信支付"]
-cons: ["测速受限于本地网络环境","不提供直连节点"]
-targetUsers: "适合需要稳定翻墙和高质量网络的用户"
-minPrice: "约 ¥86/年起"
+name: 边缘节点 EdgeNova
+link: https://work.edgenovaaff.cc/#/?code=z81zCfw1
+rating:
+  value: 4.51
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+peakSpeed:
+  value: 99.1%
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+tags:
+  - 稳定
+  - 高速
+  - 高性价比
+features:
+  - 支持流媒体解锁
+  - 晚高峰秒开
+  - 全平台支持
+pros:
+  - 性价比极高
+  - 套餐选择灵活
+  - 支持支付宝/微信支付
+cons:
+  - 测速受限于本地网络环境
+  - 不提供直连节点
+targetUsers: 适合需要稳定翻墙和高质量网络的用户
+minPrice:
+  value: 约 ¥86/年起
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
 minPriceValue: 15
-currency: "CNY"
-trafficInfo: "大流量套餐"
-nodes: "香港、日本、新加坡、美国等"
-protocols: ["Shadowsocks", "V2Ray", "Trojan"]
-devices: 3
-updatedDate: "2026-10-09"
+currency: CNY
+trafficInfo:
+  value: 大流量套餐
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+nodes:
+  value: 香港、日本、新加坡、美国等
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+protocols:
+  - Shadowsocks
+  - V2Ray
+  - Trojan
+devices:
+  value: 3
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+updatedDate: 2026-10-09
 ---
 
 ## 品牌概览

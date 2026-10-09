@@ -1,23 +1,55 @@
 ---
-name: "光速云 LightSpeed"
-link: "https://mdlky.gsyaff.com/#/?code=6tRWbtgK"
-couponCode: "jichangcha09"
-couponDesc: "专享折扣"
-rating: 4.36
-peakSpeed: "95.6%"
-tags: ["稳定", "高速", "高性价比"]
-features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["自研协议抗封锁能力强","提供无限时流量套餐","工单回复及时"]
-cons: ["部分节点禁Ping","套餐售罄较快"]
-targetUsers: "适合需要稳定翻墙和高质量网络的用户"
-minPrice: "¥23/月起"
+name: 光速云 LightSpeed
+link: https://mdlky.gsyaff.com/#/?code=6tRWbtgK
+couponCode: jichangcha09
+couponDesc: 专享折扣
+rating:
+  value: 4.36
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+peakSpeed:
+  value: 95.6%
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+tags:
+  - 稳定
+  - 高速
+  - 高性价比
+features:
+  - 支持流媒体解锁
+  - 晚高峰秒开
+  - 全平台支持
+pros:
+  - 自研协议抗封锁能力强
+  - 提供无限时流量套餐
+  - 工单回复及时
+cons:
+  - 部分节点禁Ping
+  - 套餐售罄较快
+targetUsers: 适合需要稳定翻墙和高质量网络的用户
+minPrice:
+  value: ¥23/月起
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
 minPriceValue: 15
-currency: "CNY"
-trafficInfo: "148GB"
-nodes: "香港、日本、新加坡、美国等"
-protocols: ["Shadowsocks", "V2Ray", "Trojan"]
-devices: 3
-updatedDate: "2026-10-09"
+currency: CNY
+trafficInfo:
+  value: 148GB
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+nodes:
+  value: 香港、日本、新加坡、美国等
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+protocols:
+  - Shadowsocks
+  - V2Ray
+  - Trojan
+devices:
+  value: 3
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+updatedDate: 2026-10-09
 ---
 
 ## 品牌概览

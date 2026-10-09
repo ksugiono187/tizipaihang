@@ -5,7 +5,7 @@ import { SITE_TITLE } from '../../consts';
 
 const brands = await getCollection('brands');
 // 简单的按评分降序排列
-const sortedBrands = brands.sort((a, b) => b.data.rating - a.data.rating);
+const sortedBrands = brands.sort((a, b) => b.data.rating?.value - a.data.rating?.value);
 ---
 
 <Layout title={`品牌库 - ${SITE_TITLE}`} description="完整收录29家主流翻墙梯子与机场品牌，提供详细的参数对比、价格与专属优惠码。">
@@ -34,7 +34,7 @@ const sortedBrands = brands.sort((a, b) => b.data.rating - a.data.rating);
         <a href={`/brands/${brand.id}`} class="glass-card p-6 block hover:-translate-y-1 transition-transform group">
           <div class="flex justify-between items-start mb-4">
             <h2 class="text-2xl font-bold group-hover:text-primary transition-colors">{brand.data.name}</h2>
-            <span class="bg-white/10 text-yellow-400 text-sm px-2 py-1 rounded">★ {brand.data.rating.toFixed(1)}</span>
+            <span class="bg-white/10 text-yellow-400 text-sm px-2 py-1 rounded">★ {brand.data.rating?.value?.toFixed(1)}</span>
           </div>
           
           <div class="flex flex-wrap gap-1 mb-4">
@@ -46,11 +46,11 @@ const sortedBrands = brands.sort((a, b) => b.data.rating - a.data.rating);
           <div class="space-y-2 text-sm text-gray-300 mb-6">
             <div class="flex justify-between border-b border-white/5 pb-2">
               <span class="text-gray-500">最低价格</span>
-              <span class="font-semibold text-white">{brand.data.minPrice}</span>
+              <span class="font-semibold text-white">{brand.data.minPrice?.value}</span>
             </div>
             <div class="flex justify-between border-b border-white/5 pb-2">
               <span class="text-gray-500">基础流量</span>
-              <span class="font-semibold text-white truncate max-w-[150px]">{brand.data.trafficInfo || '待核实'}</span>
+              <span class="font-semibold text-white truncate max-w-[150px]">{brand.data.trafficInfo?.value || '待核实'}</span>
             </div>
             <div class="flex justify-between border-b border-white/5 pb-2">
               <span class="text-gray-500">支持协议</span>

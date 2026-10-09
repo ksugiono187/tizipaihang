@@ -1,22 +1,53 @@
 ---
-name: "梯子云 LadderCloud"
-link: "https://varnexa.ladderaff.com/#/?code=kuE4kqxo"
-
-rating: 4.15
-peakSpeed: "95.6%"
-tags: ["稳定", "高速", "高性价比"]
-features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["非常适合游戏加速","UDP转发良好","全中转高速通道"]
-cons: ["晚高峰偶尔有轻微波动","部分冷门节点较少"]
-targetUsers: "适合需要稳定翻墙和高质量网络的用户"
-minPrice: "¥25/月起"
+name: 梯子云 LadderCloud
+link: https://varnexa.ladderaff.com/#/?code=kuE4kqxo
+rating:
+  value: 4.15
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+peakSpeed:
+  value: 95.6%
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+tags:
+  - 稳定
+  - 高速
+  - 高性价比
+features:
+  - 支持流媒体解锁
+  - 晚高峰秒开
+  - 全平台支持
+pros:
+  - 非常适合游戏加速
+  - UDP转发良好
+  - 全中转高速通道
+cons:
+  - 晚高峰偶尔有轻微波动
+  - 部分冷门节点较少
+targetUsers: 适合需要稳定翻墙和高质量网络的用户
+minPrice:
+  value: ¥25/月起
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
 minPriceValue: 15
-currency: "CNY"
-trafficInfo: "125GB"
-nodes: "香港、日本、新加坡、美国等"
-protocols: ["Shadowsocks", "V2Ray", "Trojan"]
-devices: 3
-updatedDate: "2026-10-09"
+currency: CNY
+trafficInfo:
+  value: 125GB
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+nodes:
+  value: 香港、日本、新加坡、美国等
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+protocols:
+  - Shadowsocks
+  - V2Ray
+  - Trojan
+devices:
+  value: 3
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+updatedDate: 2026-10-09
 ---
 
 ## 品牌概览

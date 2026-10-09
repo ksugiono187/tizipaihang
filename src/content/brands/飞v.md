@@ -1,22 +1,53 @@
 ---
-name: "飞V"
-link: "https://varnexa.flyvaff.com/#/?code=UoU2Izm5"
-
-rating: 4.18
-peakSpeed: "94.0%"
-tags: ["稳定", "高速", "高性价比"]
-features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["主打极速纯专线","香港/日本节点极其稳定","无流媒体审计限制"]
-cons: ["最低套餐门槛较高","不支持退款"]
-targetUsers: "适合需要稳定翻墙和高质量网络的用户"
-minPrice: "¥4.9/月起"
+name: 飞V
+link: https://varnexa.flyvaff.com/#/?code=UoU2Izm5
+rating:
+  value: 4.18
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+peakSpeed:
+  value: 94.0%
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+tags:
+  - 稳定
+  - 高速
+  - 高性价比
+features:
+  - 支持流媒体解锁
+  - 晚高峰秒开
+  - 全平台支持
+pros:
+  - 主打极速纯专线
+  - 香港/日本节点极其稳定
+  - 无流媒体审计限制
+cons:
+  - 最低套餐门槛较高
+  - 不支持退款
+targetUsers: 适合需要稳定翻墙和高质量网络的用户
+minPrice:
+  value: ¥4.9/月起
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
 minPriceValue: 15
-currency: "CNY"
-trafficInfo: "提供不限时套餐"
-nodes: "香港、日本、新加坡、美国等"
-protocols: ["Shadowsocks", "V2Ray", "Trojan"]
-devices: 3
-updatedDate: "2026-10-09"
+currency: CNY
+trafficInfo:
+  value: 提供不限时套餐
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+nodes:
+  value: 香港、日本、新加坡、美国等
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+protocols:
+  - Shadowsocks
+  - V2Ray
+  - Trojan
+devices:
+  value: 3
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+updatedDate: 2026-10-09
 ---
 
 ## 品牌概览

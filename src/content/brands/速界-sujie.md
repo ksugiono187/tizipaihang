@@ -1,22 +1,53 @@
 ---
-name: "速界 SuJie"
-link: "https://work.speedworldaff.cc/#/?code=wSjLCpIf"
-
-rating: 4.45
-peakSpeed: "95.7%"
-tags: ["稳定", "高速", "高性价比"]
-features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["适合新手一键使用","提供专用傻瓜式客户端","流媒体解锁稳定"]
-cons: ["仅支持主流协议(V2Ray/Trojan)","缺乏冷门小众国家"]
-targetUsers: "适合需要稳定翻墙和高质量网络的用户"
-minPrice: "¥25/月起"
+name: 速界 SuJie
+link: https://work.speedworldaff.cc/#/?code=wSjLCpIf
+rating:
+  value: 4.45
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+peakSpeed:
+  value: 95.7%
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+tags:
+  - 稳定
+  - 高速
+  - 高性价比
+features:
+  - 支持流媒体解锁
+  - 晚高峰秒开
+  - 全平台支持
+pros:
+  - 适合新手一键使用
+  - 提供专用傻瓜式客户端
+  - 流媒体解锁稳定
+cons:
+  - 仅支持主流协议(V2Ray/Trojan)
+  - 缺乏冷门小众国家
+targetUsers: 适合需要稳定翻墙和高质量网络的用户
+minPrice:
+  value: ¥25/月起
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
 minPriceValue: 15
-currency: "CNY"
-trafficInfo: "按套餐而定"
-nodes: "香港、日本、新加坡、美国等"
-protocols: ["Shadowsocks", "V2Ray", "Trojan"]
-devices: 3
-updatedDate: "2026-10-09"
+currency: CNY
+trafficInfo:
+  value: 按套餐而定
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+nodes:
+  value: 香港、日本、新加坡、美国等
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+protocols:
+  - Shadowsocks
+  - V2Ray
+  - Trojan
+devices:
+  value: 3
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+updatedDate: 2026-10-09
 ---
 
 ## 品牌概览

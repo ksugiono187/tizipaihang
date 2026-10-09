@@ -51,15 +51,15 @@ const productSchema = {
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm mb-6">
             <div>
               <span class="block text-gray-500 mb-1">最低价格</span>
-              <span class="font-bold text-lg text-white">{data.minPrice}</span>
+              <span class="font-bold text-lg text-white">{data.minPrice?.value}</span>
             </div>
             <div>
               <span class="block text-gray-500 mb-1">支持设备</span>
-              <span class="font-bold text-lg text-white">{data.devices} 台</span>
+              <span class="font-bold text-lg text-white">{data.devices?.value} 台</span>
             </div>
             <div>
               <span class="block text-gray-500 mb-1">综合评分</span>
-              <span class="font-bold text-lg text-yellow-400">★ {data.rating.toFixed(1)}</span>
+              <span class="font-bold text-lg text-yellow-400">★ {data.rating?.value?.toFixed(1)}</span>
             </div>
             <div>
               <span class="block text-gray-500 mb-1">更新时间</span>

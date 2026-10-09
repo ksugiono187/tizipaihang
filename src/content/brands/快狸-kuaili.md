@@ -1,22 +1,53 @@
 ---
-name: "快狸 KuaiLi"
-link: "https://work.kuailicloud.cc/#/?code=gVGJa0Mp"
-
-rating: 4.42
-peakSpeed: "95.8%"
-tags: ["稳定", "高速", "高性价比"]
-features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["性价比极高","套餐选择灵活","支持支付宝/微信支付"]
-cons: ["测速受限于本地网络环境","不提供直连节点"]
-targetUsers: "适合需要稳定翻墙和高质量网络的用户"
-minPrice: "¥10/月起（年付折算）"
+name: 快狸 KuaiLi
+link: https://work.kuailicloud.cc/#/?code=gVGJa0Mp
+rating:
+  value: 4.42
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+peakSpeed:
+  value: 95.8%
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+tags:
+  - 稳定
+  - 高速
+  - 高性价比
+features:
+  - 支持流媒体解锁
+  - 晚高峰秒开
+  - 全平台支持
+pros:
+  - 性价比极高
+  - 套餐选择灵活
+  - 支持支付宝/微信支付
+cons:
+  - 测速受限于本地网络环境
+  - 不提供直连节点
+targetUsers: 适合需要稳定翻墙和高质量网络的用户
+minPrice:
+  value: ¥10/月起（年付折算）
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
 minPriceValue: 15
-currency: "CNY"
-trafficInfo: "30GB/月"
-nodes: "香港、日本、新加坡、美国等"
-protocols: ["Shadowsocks", "V2Ray", "Trojan"]
-devices: 3
-updatedDate: "2026-10-09"
+currency: CNY
+trafficInfo:
+  value: 30GB/月
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+nodes:
+  value: 香港、日本、新加坡、美国等
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+protocols:
+  - Shadowsocks
+  - V2Ray
+  - Trojan
+devices:
+  value: 3
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+updatedDate: 2026-10-09
 ---
 
 ## 品牌概览

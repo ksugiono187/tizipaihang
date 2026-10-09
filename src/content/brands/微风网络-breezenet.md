@@ -1,23 +1,55 @@
 ---
-name: "微风网络 Breezenet"
-link: "https://edp01.breezenetaff.com/#/?code=4KDOroY0"
-couponCode: "weifeng90"
-couponDesc: "专享折扣"
-rating: 4.9
-peakSpeed: "98.5%"
-tags: ["稳定", "高速", "高性价比"]
-features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["提供大流量套餐","BGP中转入口优秀","支持企业级定制"]
-cons: ["不支持BT下载","退款政策较为苛刻"]
-targetUsers: "适合需要稳定翻墙和高质量网络的用户"
-minPrice: "¥8/月起"
+name: 微风网络 Breezenet
+link: https://edp01.breezenetaff.com/#/?code=4KDOroY0
+couponCode: weifeng90
+couponDesc: 专享折扣
+rating:
+  value: 4.9
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+peakSpeed:
+  value: 98.5%
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+tags:
+  - 稳定
+  - 高速
+  - 高性价比
+features:
+  - 支持流媒体解锁
+  - 晚高峰秒开
+  - 全平台支持
+pros:
+  - 提供大流量套餐
+  - BGP中转入口优秀
+  - 支持企业级定制
+cons:
+  - 不支持BT下载
+  - 退款政策较为苛刻
+targetUsers: 适合需要稳定翻墙和高质量网络的用户
+minPrice:
+  value: ¥8/月起
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
 minPriceValue: 15
-currency: "CNY"
-trafficInfo: "200GB"
-nodes: "香港、日本、新加坡、美国等"
-protocols: ["Shadowsocks", "V2Ray", "Trojan"]
-devices: 3
-updatedDate: "2026-10-09"
+currency: CNY
+trafficInfo:
+  value: 200GB
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+nodes:
+  value: 香港、日本、新加坡、美国等
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+protocols:
+  - Shadowsocks
+  - V2Ray
+  - Trojan
+devices:
+  value: 3
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+updatedDate: 2026-10-09
 ---
 
 ## 品牌概览

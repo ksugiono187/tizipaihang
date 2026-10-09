@@ -1,23 +1,55 @@
 ---
-name: "星岛梦 StarDream"
-link: "https://kfccbb.xingdaomeng.com/#/?code=JTRIWFim"
-couponCode: "nmw888"
-couponDesc: "专享折扣"
-rating: 4.39
-peakSpeed: "99.5%"
-tags: ["稳定", "高速", "高性价比"]
-features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["老牌大厂信誉好","多条冷门国家节点","高峰期丢包率低于1%"]
-cons: ["偶有支付网关维护","暂不提供自定义路由策略"]
-targetUsers: "适合需要稳定翻墙和高质量网络的用户"
-minPrice: "¥16/月起"
+name: 星岛梦 StarDream
+link: https://kfccbb.xingdaomeng.com/#/?code=JTRIWFim
+couponCode: nmw888
+couponDesc: 专享折扣
+rating:
+  value: 4.39
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+peakSpeed:
+  value: 99.5%
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+tags:
+  - 稳定
+  - 高速
+  - 高性价比
+features:
+  - 支持流媒体解锁
+  - 晚高峰秒开
+  - 全平台支持
+pros:
+  - 老牌大厂信誉好
+  - 多条冷门国家节点
+  - 高峰期丢包率低于1%
+cons:
+  - 偶有支付网关维护
+  - 暂不提供自定义路由策略
+targetUsers: 适合需要稳定翻墙和高质量网络的用户
+minPrice:
+  value: ¥16/月起
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
 minPriceValue: 15
-currency: "CNY"
-trafficInfo: "100GB/月"
-nodes: "香港、日本、新加坡、美国等"
-protocols: ["Shadowsocks", "V2Ray", "Trojan"]
-devices: 3
-updatedDate: "2026-10-09"
+currency: CNY
+trafficInfo:
+  value: 100GB/月
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+nodes:
+  value: 香港、日本、新加坡、美国等
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+protocols:
+  - Shadowsocks
+  - V2Ray
+  - Trojan
+devices:
+  value: 3
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+updatedDate: 2026-10-09
 ---
 
 ## 品牌概览

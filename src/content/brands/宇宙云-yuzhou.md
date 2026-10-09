@@ -1,23 +1,55 @@
 ---
-name: "宇宙云 YuZhou"
-link: "https://wzjc.yuzoucloud.cc/#/?code=wL7YStBa"
-couponCode: "YUZHOU553"
-couponDesc: "专享折扣"
-rating: 4.57
-peakSpeed: "96.1%"
-tags: ["稳定", "高速", "高性价比"]
-features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["IPLC专线延迟极低","不限制设备数量","客服响应速度快"]
-cons: ["节点更换频率较低","高峰期需手动切换更优节点"]
-targetUsers: "适合需要稳定翻墙和高质量网络的用户"
-minPrice: "¥14.9/月起"
+name: 宇宙云 YuZhou
+link: https://wzjc.yuzoucloud.cc/#/?code=wL7YStBa
+couponCode: YUZHOU553
+couponDesc: 专享折扣
+rating:
+  value: 4.57
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+peakSpeed:
+  value: 96.1%
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+tags:
+  - 稳定
+  - 高速
+  - 高性价比
+features:
+  - 支持流媒体解锁
+  - 晚高峰秒开
+  - 全平台支持
+pros:
+  - IPLC专线延迟极低
+  - 不限制设备数量
+  - 客服响应速度快
+cons:
+  - 节点更换频率较低
+  - 高峰期需手动切换更优节点
+targetUsers: 适合需要稳定翻墙和高质量网络的用户
+minPrice:
+  value: ¥14.9/月起
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
 minPriceValue: 15
-currency: "CNY"
-trafficInfo: "60GB/月起"
-nodes: "香港、日本、新加坡、美国等"
-protocols: ["Shadowsocks", "V2Ray", "Trojan"]
-devices: 3
-updatedDate: "2026-10-09"
+currency: CNY
+trafficInfo:
+  value: 60GB/月起
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+nodes:
+  value: 香港、日本、新加坡、美国等
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+protocols:
+  - Shadowsocks
+  - V2Ray
+  - Trojan
+devices:
+  value: 3
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+updatedDate: 2026-10-09
 ---
 
 ## 品牌概览

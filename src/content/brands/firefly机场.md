@@ -1,23 +1,55 @@
 ---
-name: "Firefly机场"
-link: "https://vip02.fireflyaff.com/#/?code=Fes6j9rn"
-couponCode: "firefly"
-couponDesc: "专享折扣"
-rating: 4.78
-peakSpeed: "94.4%"
-tags: ["稳定", "高速", "高性价比"]
-features: ["支持流媒体解锁", "晚高峰秒开", "全平台支持"]
-pros: ["原生节点解锁流媒体","晚高峰无明显降速","支持全平台客户端"]
-cons: ["不提供免费试用","专用客户端UI较为简陋"]
-targetUsers: "适合需要稳定翻墙和高质量网络的用户"
-minPrice: "约 ¥8/月（年付折算）"
+name: Firefly机场
+link: https://vip02.fireflyaff.com/#/?code=Fes6j9rn
+couponCode: firefly
+couponDesc: 专享折扣
+rating:
+  value: 4.78
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+peakSpeed:
+  value: 94.4%
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+tags:
+  - 稳定
+  - 高速
+  - 高性价比
+features:
+  - 支持流媒体解锁
+  - 晚高峰秒开
+  - 全平台支持
+pros:
+  - 原生节点解锁流媒体
+  - 晚高峰无明显降速
+  - 支持全平台客户端
+cons:
+  - 不提供免费试用
+  - 专用客户端UI较为简陋
+targetUsers: 适合需要稳定翻墙和高质量网络的用户
+minPrice:
+  value: 约 ¥8/月（年付折算）
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
 minPriceValue: 15
-currency: "CNY"
-trafficInfo: "60GB/月"
-nodes: "香港、日本、新加坡、美国等"
-protocols: ["Shadowsocks", "V2Ray", "Trojan"]
-devices: 3
-updatedDate: "2026-10-09"
+currency: CNY
+trafficInfo:
+  value: 60GB/月
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+nodes:
+  value: 香港、日本、新加坡、美国等
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+protocols:
+  - Shadowsocks
+  - V2Ray
+  - Trojan
+devices:
+  value: 3
+  verificationStatus: historical
+  notes: 旧版数据，尚未核实
+updatedDate: 2026-10-09
 ---
 
 ## 品牌概览

@@ -21,7 +21,7 @@ const { name, desc } = Astro.props;
 const brands = await getCollection('brands');
 
 // 移除随机排名，全部基于真实评分数据排序
-const topBrands = [...brands].sort((a, b) => b.data.rating - a.data.rating).slice(0, 10);
+const topBrands = [...brands].sort((a, b) => b.data.rating?.value - a.data.rating?.value).slice(0, 10);
 ---
 
 <Layout title={`${name} Top 10 排行榜（2026） - ${SITE_TITLE}`} description={`2026年最新${name}推荐排行，${desc} 详细对比各家优缺点。`}>
@@ -53,7 +53,7 @@ const topBrands = [...brands].sort((a, b) => b.data.rating - a.data.rating).slic
             <h3 class="text-xl font-bold mb-1 hover:text-primary transition-colors">
               <a href={`/brands/${brand.id}`}>{brand.data.name}</a>
             </h3>
-            <div class="text-sm text-gray-400">最低 {brand.data.currency} {brand.data.minPrice} / 月</div>
+            <div class="text-sm text-gray-400">最低 {brand.data.currency} {brand.data.minPrice?.value} / 月</div>
           </div>
           <div class="z-10 flex-shrink-0">
              <a href={brand.data.link} target="_blank" rel="nofollow noopener" class="px-4 py-2 bg-primary/20 hover:bg-primary text-primary hover:text-white rounded-lg transition-colors text-sm font-medium">

@@ -8,7 +8,7 @@ const allBrands = await getCollection('brands');
 const brandsWithCoupons = allBrands.filter(brand => brand.data.couponCode && brand.data.couponCode.trim() !== '无' && brand.data.couponCode.trim() !== '');
 
 // 简单的按评分降序排列
-const sortedBrands = brandsWithCoupons.sort((a, b) => b.data.rating - a.data.rating);
+const sortedBrands = brandsWithCoupons.sort((a, b) => b.data.rating?.value - a.data.rating?.value);
 ---
 
 <Layout title={`最新机场优惠码大全 - ${SITE_TITLE}`} description="2026年最新全网翻墙机场优惠码、折扣券收集整理。为您提供最划算的专属折扣代码，购买即省钱。">
@@ -40,11 +40,11 @@ const sortedBrands = brandsWithCoupons.sort((a, b) => b.data.rating - a.data.rat
           <div class="p-6 flex-grow">
             <div class="flex items-center justify-between mb-4">
               <h2 class="text-2xl font-bold text-white group-hover:text-purple-400 transition-colors">{brand.data.name}</h2>
-              <span class="text-yellow-400 bg-yellow-400/10 px-2 py-1 rounded text-sm font-semibold">★ {brand.data.rating.toFixed(1)}</span>
+              <span class="text-yellow-400 bg-yellow-400/10 px-2 py-1 rounded text-sm font-semibold">★ {brand.data.rating?.value?.toFixed(1)}</span>
             </div>
             
             <p class="text-gray-400 text-sm mb-6 line-clamp-2">
-              {brand.data.trafficInfo} / {brand.data.minPrice}
+              {brand.data.trafficInfo?.value} / {brand.data.minPrice?.value}
             </p>
 
             <div class="bg-black/40 border border-purple-500/30 rounded-xl p-4 mb-4 relative overflow-hidden group/code">
