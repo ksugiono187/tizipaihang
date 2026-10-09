@@ -1,63 +1,53 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import Layout from '../layouts/Layout.astro';
+import { SITE_TITLE } from '../consts';
 ---
 
 <Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage={AboutHeroImage}
+	title={`关于本站 - ${SITE_TITLE}`}
+	description="关于梯子排行，我们是谁，我们的评测理念与数据来源。"
 >
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+  <div class="max-w-4xl mx-auto px-4 py-16">
+    <div class="glass-card p-8 md:p-12 rounded-2xl relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] -z-10"></div>
+      
+      <h1 class="text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
+        关于 {SITE_TITLE}
+      </h1>
+      
+      <div class="prose prose-invert prose-lg max-w-none">
+        <p>
+          欢迎来到 <strong>{SITE_TITLE}</strong>。在如今错综复杂的网络环境中，找到一款稳定、高速且性价比高的翻墙梯子（机场）变得越来越困难。各种“跑路”、“超售”、“虚假宣传”层出不穷。
+        </p>
+        
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">我们的使命</h2>
+        <p>
+          我们建立本站的初衷非常简单：<strong>用真实的数据，打破信息差</strong>。
+        </p>
+        <p>
+          我们拒绝“云评测”和“无脑吹”。本站收录的所有机场，均经过我们自费购买套餐，并部署在全球各地的探针节点进行长期监控。我们只推荐那些经过时间检验、真正值得信赖的网络服务商。
+        </p>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">我们的评测标准</h2>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-start"><span class="text-primary mr-2">✓</span> <strong>晚高峰稳定性：</strong> 重点考察 20:00 - 23:00 黄金时段的丢包率与带宽保障。</li>
+          <li class="flex items-start"><span class="text-primary mr-2">✓</span> <strong>流媒体解锁：</strong> 每日定时检测 Netflix、Disney+、ChatGPT 等常用服务的原生解锁情况。</li>
+          <li class="flex items-start"><span class="text-primary mr-2">✓</span> <strong>价格与透明度：</strong> 杜绝隐藏消费，严格评估各家套餐的“每GB单价”性价比。</li>
+          <li class="flex items-start"><span class="text-primary mr-2">✓</span> <strong>技术架构：</strong> 深入分析 IPLC/IEPL 专线、BGP 中转以及协议的抗封锁能力。</li>
+        </ul>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
-
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
-
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">联系我们</h2>
+        <p>
+          如果您是机场主希望提交收录申请，或者您是普通用户在使用中遇到了问题，欢迎通过邮件与我们取得联系。<br/>
+          <em>(注：请确保您提交的机场已稳定运营超过半年)</em>
+        </p>
+        
+        <div class="mt-8 p-6 bg-white/5 border border-white/10 rounded-xl inline-block">
+          <p class="m-0 font-mono text-gray-300">
+            合作与反馈邮箱：<a href="mailto:admin@tizipaihang.wiki" class="text-primary hover:underline">admin@tizipaihang.wiki</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </Layout>
