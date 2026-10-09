@@ -1,0 +1,36 @@
+backend:
+  name: github
+  repo: ksugiono187/tizipaihang
+  branch: master
+
+media_folder: "src/assets"
+public_folder: "../../assets"
+
+collections:
+  - name: "brands"
+    label: "机场品牌库"
+    folder: "src/content/brands"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "品牌名称", name: "name", widget: "string"}
+      - {label: "描述", name: "description", widget: "string"}
+      - {label: "链接", name: "link", widget: "string"}
+      - {label: "评分", name: "rating", widget: "number", value_type: "float"}
+      - {label: "最低价格", name: "minPrice", widget: "number", value_type: "float"}
+      - {label: "货币单位", name: "currency", widget: "string"}
+      - {label: "优惠码", name: "couponCode", widget: "string", required: false}
+      - {label: "正文内容", name: "body", widget: "markdown"}
+      
+  - name: "blog"
+    label: "博客与教程"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "标题", name: "title", widget: "string"}
+      - {label: "描述", name: "description", widget: "string"}
+      - {label: "发布日期", name: "pubDate", widget: "datetime"}
+      - {label: "更新日期", name: "updatedDate", widget: "datetime", required: false}
+      - {label: "头图", name: "heroImage", widget: "image", required: false}
+      - {label: "正文内容", name: "body", widget: "markdown"}

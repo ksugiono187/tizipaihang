@@ -1,0 +1,35 @@
+---
+// ClickTracker.astro
+// 用于监听全站的出站推广链接点击，方便后续接入 GA4 或自建统计后台
+---
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const affiliateLinks = document.querySelectorAll('a[href*="?code="], a[href*="aff"]');
+    
+    affiliateLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const url = new URL((e.currentTarget as HTMLAnchorElement).href);
+        const brandName = (e.currentTarget as HTMLAnchorElement).closest('.glass-card')?.querySelector('h2, h3')?.textContent?.trim() || '未知品牌';
+        const location = window.location.pathname;
+        
+        // 构造埋点数据
+        const trackData = {
+          event: 'affiliate_click',
+          brand: brandName,
+          target_url: url.href,
+          source_page: location,
+          timestamp: new Date().toISOString()
+        };
+
+        // 打印到控制台 (可替换为 dataLayer.push(trackData) 或 fetch API 发送到后端)
+        console.log('📊 [埋点追踪] 推广链接被点击:', trackData);
+        
+        // 如果接入了 Google Analytics (GA4)
+        if (typeof window !== 'undefined' && (window as any).dataLayer) {
+          (window as any).dataLayer.push(trackData);
+        }
+      });
+    });
+  });
+</script>
