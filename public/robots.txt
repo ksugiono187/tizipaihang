@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fanqiangtizi.wiki/sitemap-index.xml
+Sitemap: https://tizipaihang.wiki/sitemap-index.xml
